@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Avatar, Card } from 'astrolace:components';
+import { Code } from 'astro:components';
+---
+
+<Layout title="Astro Community Code::Stats Leaderboard">
+	<main>
+		<div class="screen-title-holder">
+			<h1 class="screen-title">
+				Astro Community <Code code={`Code::Stats`} inline /> Leaderboard
+			</h1>
+		</div>
+
+			<Card class="card">
+				<div class="card-content">
+					<Avatar image={""} />
+					<div>Name</div>
+					<div>Top Languages</div>
+					<div>Top Machine</div>
+					<div>Level</div>
+					<div>Rank</div>
+				</div>
+			</Card>
+	</main>
+</Layout>

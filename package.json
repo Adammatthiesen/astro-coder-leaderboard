@@ -1,0 +1,26 @@
+{
+  "name": "astro-coder-leaderboard",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/db": "^0.11.6",
+    "@astrojs/node": "^8.3.1",
+    "@iconify-json/logos": "^1.1.43",
+    "@iconify-json/mdi": "^1.1.67",
+    "@iconify-json/skill-icons": "^1.1.8",
+    "@matthiesenxyz/astrolace": "^0.1.0",
+    "@matthiesenxyz/unocss-preset-daisyui": "^0.1.0",
+    "@unocss/astro": "^0.61.0",
+    "@unocss/reset": "^0.61.0",
+    "astro": "^4.11.0",
+    "unocss": "^0.61.0"
+  }
+}

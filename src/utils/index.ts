@@ -24,7 +24,7 @@ const UserList: UserListType = [
 const getCodeStats = async (username: string): Promise<codeStatsApiResponse> => {
     const data = await fetch(`https://codestats.net/api/users/${username}`);
 
-    if (!data.json()) {
+    if (data.status === 404) {
         return {
             total_xp: null,
             machines: [],

@@ -11,53 +11,50 @@ const { fetchUserStats } = Astro.props;
 ---
 {
     fetchUserStats.map((
-        { 
-            displayName, 
-            totalXP, 
-            topMachine: { 
-                name: TopMachineName 
-            }, 
-            topLanguages: { 
-                first: { name: FirstLanguage },
-                second: { name: SecondLanguage },
-                third: { name: ThirdLanguage }
-            }
-        }, 
-        index
+        { displayName, gravaterURL, totalXP, topMachine, topLanguages }, index
     ) => (
         <Card class="sl-card">
             <div class="card-content">
 
-                <Avatar image={''} />
+                <Avatar image={ gravaterURL || "" } label={displayName + "'s Gravatar Image"} />
 
                 <div class="name">
-                    {displayName}
+                    { displayName }
                 </div>
 
                 <div class="language-group">
-                    { FirstLanguage && (
+                    { // @ts-expect-error: topLanguages is an `Object` Type
+                        topLanguages.first && (
                         <div class="languages">
-                            {FirstLanguage}
+                            { // @ts-expect-error: topLanguages is an `Object` Type 
+                                topLanguages.first 
+                            }
                         </div>
                     )}
-                    { SecondLanguage && (
+                    { // @ts-expect-error: topLanguages is an `Object` Type
+                        topLanguages.second && (
                         <div class="languages">
-                            {SecondLanguage}
+                            { // @ts-expect-error: topLanguages is an `Object` Type
+                                topLanguages.second 
+                            }
                         </div>
                     )}
-                    {ThirdLanguage && (
+                    { // @ts-expect-error: topLanguages is an `Object` Type
+                        topLanguages.third && (
                         <div class="languages">
-                            {ThirdLanguage}
+                            { // @ts-expect-error: topLanguages is an `Object` Type
+                                topLanguages.third 
+                            }
                         </div>
                     )}
                 </div>
 
                 <div class="machine">
-                    {TopMachineName}
+                    { topMachine }
                 </div>
 
                 <div class="level">
-                    Level {getLevel(totalXP)}
+                    Level { getLevel(totalXP) }
                 </div>
 
                 <div class="rank">

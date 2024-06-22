@@ -1,5 +1,7 @@
 import { getCodeStats, languageFix } from ".";
 import type { ReturnCodeStatsUserList, UserListType } from "../types";
+import { languageFilter } from "./LanguageFilter";
+import { createGravatar } from "./createGravatarURL";
 
 export const returnCodeStatsUserList = async (userList: UserListType) => {
     const returnArray: ReturnCodeStatsUserList[] = [];
@@ -8,7 +10,7 @@ export const returnCodeStatsUserList = async (userList: UserListType) => {
         const codeStats = await getCodeStats(user.codestatsUsername);
 
         let topMachine: ReturnCodeStatsUserList["topMachine"] = null;
-        let topLanguages: ReturnCodeStatsUserList["topLanguages"] = null;
+        let topLanguages: ReturnCodeStatsUserList["topLanguages"] = {};
 
         const machineList = Object.entries(codeStats.machines);
 
@@ -16,91 +18,60 @@ export const returnCodeStatsUserList = async (userList: UserListType) => {
             if (machineList.length === 1) {
                 const TopMachine = machineList[0];
 
-                topMachine = {
-                    name: TopMachine[0],
-                    xps: TopMachine[1].xps,
-                    new_xps: TopMachine[1].new_xps
-                }
+                topMachine = TopMachine[0]
             }
             if (machineList.length > 1) {
                 machineList.sort((a, b) => b[1].xps - a[1].xps);
 
                 const TopMachine = machineList[0];
 
-                topMachine = {
-                    name: TopMachine[0],
-                    xps: TopMachine[1].xps,
-                    new_xps: TopMachine[1].new_xps
+                topMachine = TopMachine[0]
+            }
+        }
+
+        const languageList = languageFilter(codeStats.languages);
+
+        if (languageList.length > 0) {
+            if (languageList.length === 1) {
+                topLanguages = {
+                    first: languageFix(languageList[0][0]),
+                }
+            }
+            if (languageList.length === 2) {
+                languageList.sort((a, b) => b[1].xps - a[1].xps);
+
+                topLanguages = {
+                    first: languageFix(languageList[0][0]),
+                    second: languageFix(languageList[1][0]),
+                }
+            }
+            if (languageList.length > 2) {
+                languageList.sort((a, b) => b[1].xps - a[1].xps);
+
+                topLanguages = {
+                    first: languageFix(languageList[0][0]),
+                    second: languageFix(languageList[1][0]),
+                    third: languageFix(languageList[2][0]),
                 }
             }
         }
 
-        const languageList = Object.entries(codeStats.languages);
+        let gravaterURL = null;
+        if (user.gravatarEmail) {
+            gravaterURL = await createGravatar(user.gravatarEmail);
+        }
 
-        languageList.filter((language) => {
-            if (language[0] === "scminput") {
-                languageList.splice(languageList.indexOf(language), 1);
-            } 
-        });
-
-        languageList.filter((language) => {
-            if (language[0] === "Ignore") {
-                languageList.splice(languageList.indexOf(language), 1);
-            }
-        });
-
-        languageList.filter((language) => {
-            if (language[0] === "github-actions-workflow") {
-                languageList.splice(languageList.indexOf(language), 1);
-            }
-        });
-
-        if (languageList.length > 0) {
-            if (languageList.length === 1) {
-                const TopLanguage = languageList[0];
-
-                topLanguages = {
-                    first: {
-                        name: languageFix(TopLanguage[0]),
-                        xps: TopLanguage[1].xps,
-                        new_xps: TopLanguage[1].new_xps
-                    },
-                    second: null,
-                    third: null
-                }
-            }
-            if (languageList.length > 1) {
-                languageList.sort((a, b) => b[1].xps - a[1].xps);
-
-                const TopLanguage = languageList[0];
-                const SecondLanguage = languageList[1];
-                const ThirdLanguage = languageList[2];
-
-                topLanguages = {
-                    first: {
-                        name: languageFix(TopLanguage[0]),
-                        xps: TopLanguage[1].xps,
-                        new_xps: TopLanguage[1].new_xps
-                    },
-                    second: {
-                        name: languageFix(SecondLanguage[0]),
-                        xps: SecondLanguage[1].xps,
-                        new_xps: SecondLanguage[1].new_xps
-                    },
-                    third: {
-                        name: languageFix(ThirdLanguage[0]),
-                        xps: ThirdLanguage[1].xps,
-                        new_xps: ThirdLanguage[1].new_xps
-                    }
-                }
-            }
+        let totalXP = 0;
+        if (codeStats.total_xp) {
+            totalXP = codeStats.total_xp;
         }
 
         returnArray.push({
             id: user.id,
             displayName: user.displayName,
             codestatsUsername: user.codestatsUsername,
-            totalXP: codeStats.total_xp,
+            gravaterURL,
+            totalXP,
             topMachine,
             topLanguages
         });

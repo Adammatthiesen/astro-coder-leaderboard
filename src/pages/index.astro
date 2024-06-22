@@ -1,10 +1,8 @@
 ---
+import { TitleElement, HeaderCard, UserCard } from '../components/index-components';
 import Layout from '../layouts/Layout.astro';
-import { Avatar, Card } from 'astrolace:components';
-import { Code } from 'astro:components';
 import type { UserListType } from '../types';
 import { returnCodeStatsUserList } from '../utils';
-import { getLevel } from '../utils';
 
 const UserList: UserListType = [
     { id: 1, displayName: "Adam Matthiesen", codestatsUsername: "adamm2047"},
@@ -16,35 +14,12 @@ const fetchUserStats = await returnCodeStatsUserList(UserList);
 
 <Layout title="Astro Community Code::Stats Leaderboard">
 	<main>
-		<div class="screen-title-holder">
-			<h1 class="screen-title">
-				Astro Community <Code code={`Code::Stats`} inline={true} /> Leaderboard
-			</h1>
-		</div>
+		
+		<TitleElement />
 
-		<Card class="header-sl-card">
-			<div class="header-card-content">
-				<Avatar image={""} />
-				<div>Name</div>
-				<div>Top Languages</div>
-				<div>Top Machine</div>
-				<div>Level</div>
-			</div>
-		</Card>
+		<HeaderCard />
 
-		{
-			fetchUserStats.sort((a, b) => b.totalXP - a.totalXP).map((user) => (
-				<Card class="sl-card">
-					<div class="card-content">
-						<Avatar image={''} />
-						<div>{user.displayName}</div>
-						<div>{user.topLanguages.first.name + " " + user.topLanguages.second.name + " " + user.topLanguages.third.name}</div>
-						<div>{user.topMachine.name}</div>
-						<div>{getLevel(user.totalXP)}</div>
-					</div>
-				</Card>
-			))
-		}
+		<UserCard {fetchUserStats} />
 
 	</main>
 </Layout>

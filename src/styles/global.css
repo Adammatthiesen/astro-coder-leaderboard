@@ -13,36 +13,58 @@ main {
 }
 
 .sl-card {
-	--uno-apply: "drop-shadow-2xl mb-4";
-}
-
-.header-sl-card {
 	--uno-apply: "drop-shadow-2xl mb-8";
 }
 
-.header-card-content {
-	--uno-apply: "flex flex-row content-center items-center md:px-24 gap-8 md:gap-14";
-}
-
-.header-card-content sl-avatar {
-	--size: 4rem;
-    --uno-apply: "flex-none";
-}
-
-.header-card-content div {
-    --uno-apply: "text-lg grow text-secondary font-bold";
-}
-
 .card-content {
-	--uno-apply: "flex flex-row content-center items-center p-4 md:px-24 gap-8";
+	--uno-apply: "flex flex-col md:flex-row content-center items-center justify-center p-4 lg:px-24 md:gap-8 lg:gap-14 lg:w-full";
 }
 
 .card-content sl-avatar {
-    --uno-apply: "flex-none";
+    --uno-apply: "flex-none drop-shadow-xl";
 }
 
-.card-content div {
-    --uno-apply: "text-lg grow text-secondary font-bold";
+.card-content .name {
+	--uno-apply: "text-lg flex justify-center w-full text-secondary font-bold";
+}
+
+.card-content .language-group {
+	--uno-apply: "flex flex-col w-full";
+}
+
+.card-content .languages {
+	--uno-apply: "text-lg flex justify-center w-full text-accent font-bold";
+}
+
+.card-content .machine {
+	--uno-apply: "text-sm flex justify-center w-full text-secondary font-bold";
+}
+
+.card-content .level {
+	--uno-apply: "text-2xl flex justify-center w-full text-accent font-bold";
+}
+
+.card-content .rank {
+	--uno-apply: "text-4xl flex justify-center w-full text-secondary font-bold";
+}
+
+.card-content .header {
+	--uno-apply: "text-lg font-bold flex justify-center w-full drop-shadow-xl";
+}
+
+@media screen and (max-width: 767px) {
+	.card-content .ranklabel {
+		--uno-apply: "pr-2 text-lg";
+	}
+	.card-content .rank, .card-content .level {
+		--uno-apply: "text-lg"
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.card-content .ranklabel {
+		--uno-apply: "hidden";
+	}
 }
 
 sl-avatar {

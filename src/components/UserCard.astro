@@ -1,7 +1,73 @@
 ---
+import { Avatar, Card } from 'astrolace:components';
+import type { ReturnCodeStatsUserList } from '../types';
+import { getLevel } from '../utils';
 
 interface Props {
-    name: string;
+    fetchUserStats: ReturnCodeStatsUserList[];
 }
----
 
+const { fetchUserStats } = Astro.props;
+---
+{
+    fetchUserStats.map((
+        { 
+            displayName, 
+            totalXP, 
+            topMachine: { 
+                name: TopMachineName 
+            }, 
+            topLanguages: { 
+                first: { name: FirstLanguage },
+                second: { name: SecondLanguage },
+                third: { name: ThirdLanguage }
+            }
+        }, 
+        index
+    ) => (
+        <Card class="sl-card">
+            <div class="card-content">
+
+                <Avatar image={''} />
+
+                <div class="name">
+                    {displayName}
+                </div>
+
+                <div class="language-group">
+                    { FirstLanguage && (
+                        <div class="languages">
+                            {FirstLanguage}
+                        </div>
+                    )}
+                    { SecondLanguage && (
+                        <div class="languages">
+                            {SecondLanguage}
+                        </div>
+                    )}
+                    {ThirdLanguage && (
+                        <div class="languages">
+                            {ThirdLanguage}
+                        </div>
+                    )}
+                </div>
+
+                <div class="machine">
+                    {TopMachineName}
+                </div>
+
+                <div class="level">
+                    Level {getLevel(totalXP)}
+                </div>
+
+                <div class="rank">
+                    <div class="ranklabel">
+                        Rank:
+                    </div>
+                    # { index + 1 }
+                </div>
+
+            </div>
+        </Card>
+    ))
+}

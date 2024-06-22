@@ -1,7 +1,3 @@
-export * from './codestats';
-
-export type UserListType = {
-    id: number;
-    displayName: string;
-    codestatsUsername: string;
-}[];
+export * from './codeStatsApiResponse';
+export * from './ReturnCodeStatsUserList';
+export * from './userlist';

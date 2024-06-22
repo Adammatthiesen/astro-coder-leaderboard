@@ -4,15 +4,18 @@ export const UserList = defineTable({
     columns: {
         id: column.number({ primaryKey: true }),
         displayName: column.text(),
-        codestatsUsername: column.text({ references: () => CodeStats.columns.username }),
+        codestatsUsername: column.text(),
     }
 });
 
-export const CodeStats = defineTable({
+export const CodeStatsDataCache = defineTable({
     columns: {
-        username: column.text({ primaryKey: true }),
-        totalXP: column.number(),
-        data: column.json(),
+        id: column.number({ primaryKey: true }),
+        displayName: column.text(),
+        codestatsUsername: column.text(),
+        totalXP: column.number({ optional: true }),
+        topMachine: column.text({ optional: true }),
+        topLanguages: column.text({ optional: true }),
     }
 });
 

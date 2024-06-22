@@ -1,40 +1,10 @@
-import type { codeStatsApiResponse } from "../types";
+import type { ReturnCodeStatsUserList, UserListType, codeStatsApiResponse, } from "../types";
 
 export * from "./getLevel";
 
-type UserListType = {
-    id: number;
-    displayName: string;
-    codestatsUsername: string;
-}[];
-
-type ReturnCodeStatsUserList = {
-    id: number;
-    displayName: string;
-    codestatsUsername: string;
-    totalXP: number|null;
-    topMachine: string|null;
-    topLanguages: string[]|null;
-}
-
-const UserList: UserListType = [
-    { id: 1, displayName: "Adam Matthiesen", codestatsUsername: "adamm2047"}
-];
-
 const getCodeStats = async (username: string): Promise<codeStatsApiResponse> => {
     const data = await fetch(`https://codestats.net/api/users/${username}`);
-
-    if (data.status === 404) {
-        return {
-            total_xp: null,
-            machines: [],
-            languages: [],
-            dates: [],
-            new_xp: 0,
-            user: username
-        };
-    }
-    const json: codeStatsApiResponse = await data.json();
+    const json = await data.json();
     return json;
 }
 
@@ -42,23 +12,77 @@ export const returnCodeStatsUserList = async (userList: UserListType) => {
     const returnArray: ReturnCodeStatsUserList[] = [];
 
     for (const user of userList) {
-        const codeStats: codeStatsApiResponse = await getCodeStats(user.codestatsUsername);
+        const codeStats = await getCodeStats(user.codestatsUsername);
 
-        let topMachine = null;
-        let topLanguages = null;
+        let topMachine: ReturnCodeStatsUserList["topMachine"] = null;
+        let topLanguages: ReturnCodeStatsUserList["topLanguages"] = null;
 
-        if (codeStats.machines.length === 1) {
-            topMachine = codeStats.machines[0];
+        const machineList = Object.entries(codeStats.machines);
+
+        if (machineList.length > 0) {
+            if (machineList.length === 1) {
+                const TopMachine = machineList[0];
+
+                topMachine = {
+                    name: TopMachine[0],
+                    xps: TopMachine[1].xps,
+                    new_xps: TopMachine[1].new_xps
+                }
+            }
+            if (machineList.length > 1) {
+                machineList.sort((a, b) => b[1].xps - a[1].xps);
+
+                const TopMachine = machineList[0];
+
+                topMachine = {
+                    name: TopMachine[0],
+                    xps: TopMachine[1].xps,
+                    new_xps: TopMachine[1].new_xps
+                }
+            }
         }
 
-        if (codeStats.machines.length > 1) {
-            codeStats.machines.sort((a, b) => b.xps - a.xps);
-            topMachine = codeStats.machines[0];
-        }
+        const languageList = Object.entries(codeStats.languages);
 
-        if (codeStats.languages.length > 0) {
-            codeStats.languages.sort((a, b) => b.xps - a.xps);
-            topLanguages = codeStats.languages.slice(0, 3).map(language => Object.keys(language)[0]);
+        if (languageList.length > 0) {
+            if (languageList.length === 1) {
+                const TopLanguage = languageList[0];
+
+                topLanguages = {
+                    first: {
+                        name: TopLanguage[0],
+                        xps: TopLanguage[1].xps,
+                        new_xps: TopLanguage[1].new_xps
+                    },
+                    second: null,
+                    third: null
+                }
+            }
+            if (languageList.length > 1) {
+                languageList.sort((a, b) => b[1].xps - a[1].xps);
+
+                const TopLanguage = languageList[0];
+                const SecondLanguage = languageList[1];
+                const ThirdLanguage = languageList[2];
+
+                topLanguages = {
+                    first: {
+                        name: TopLanguage[0],
+                        xps: TopLanguage[1].xps,
+                        new_xps: TopLanguage[1].new_xps
+                    },
+                    second: {
+                        name: SecondLanguage[0],
+                        xps: SecondLanguage[1].xps,
+                        new_xps: SecondLanguage[1].new_xps
+                    },
+                    third: {
+                        name: ThirdLanguage[0],
+                        xps: ThirdLanguage[1].xps,
+                        new_xps: ThirdLanguage[1].new_xps
+                    }
+                }
+            }
         }
 
         returnArray.push({

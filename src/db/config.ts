@@ -1,10 +1,10 @@
 import { defineDb } from "astro:db";
-import { SiteData, CodeStats, UserList } from "./tables";
+import { SiteData, CodeStatsDataCache, UserList } from "./tables";
 
 export default defineDb({
     tables: {
         SiteData,
-        CodeStats,
+        CodeStatsDataCache,
         UserList,
     }
 });

@@ -12,12 +12,29 @@ main {
 	--uno-apply: "text-4xl font-bold text-primary";
 }
 
-.card {
-	--uno-apply: "drop-shadow-2xl";
+.sl-card {
+	--uno-apply: "drop-shadow-2xl mb-4";
+}
+
+.header-sl-card {
+	--uno-apply: "drop-shadow-2xl mb-8";
+}
+
+.header-card-content {
+	--uno-apply: "flex flex-row content-center items-center md:px-24 gap-8 md:gap-14";
+}
+
+.header-card-content sl-avatar {
+	--size: 4rem;
+    --uno-apply: "flex-none";
+}
+
+.header-card-content div {
+    --uno-apply: "text-lg grow text-secondary font-bold";
 }
 
 .card-content {
-	--uno-apply: "flex flex-row content-center items-center p-4 md:px-24 gap-8 md:gap-12";
+	--uno-apply: "flex flex-row content-center items-center p-4 md:px-24 gap-8";
 }
 
 .card-content sl-avatar {
@@ -25,7 +42,7 @@ main {
 }
 
 .card-content div {
-    --uno-apply: "text-xl grow text-secondary font-bold";
+    --uno-apply: "text-lg grow text-secondary font-bold";
 }
 
 sl-avatar {

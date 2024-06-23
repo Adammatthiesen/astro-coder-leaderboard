@@ -1,9 +1,11 @@
-export * from "./getCodeStats";
-export * from "./getLevel";
-export * from "./languageFix";
-export * from "./returnCodeStatsUserList";
-export * from "./toPascalCase";
-export * from "./isNewDateMoreThan24HoursLater";
-export * from "./createGravatarURL";
-export * from "./LanguageFilter";
-export * from "./getCodeStatsDataCache";
+// CodeStats api handling
+export * from "./codeStatsTools";
+
+// Language tools
+export * from "./langTools";
+
+// User tools
+export * from "./userTools";
+
+// Misc tools
+export * from "./miscTools";

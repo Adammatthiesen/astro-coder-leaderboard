@@ -1,4 +1,4 @@
-import type { codeStatsApiResponse } from "../types";
+import type { codeStatsApiResponse } from "../../types";
 
 type JsonError = {
     error: string;

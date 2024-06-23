@@ -1,7 +1,7 @@
 ---
-import { TitleElement, HeaderCard, UserCard } from '../components/index-components';
-import Layout from '../layouts/Layout.astro';
-import { getCodeStatsDataCache } from '../utils';
+import Layout from '@layouts/Layout.astro';
+import { TitleElement, HeaderCard, UserCard } from '@components/index-components';
+import { getCodeStatsDataCache } from '@utils/index';
 
 const codeStatsDataCache = await getCodeStatsDataCache(new Date());
 ---

@@ -1,6 +1,6 @@
 import { CodeStatsDataCache, SiteData, UserList, db, eq } from "astro:db";
-import { isNewDateMoreThan24HoursLater, returnCodeStatsUserList } from ".";
-import type { ReturnCodeStatsUserList } from "../types";
+import { isNewDateMoreThan24HoursLater, returnCodeStatsUserList } from "@utils/index";
+import type { ReturnCodeStatsUserList } from "../../types";
 
 export async function getCodeStatsDataCache( 
     currentDate: Date 

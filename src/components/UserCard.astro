@@ -4,29 +4,32 @@ import type { ReturnCodeStatsUserList } from '../types';
 import { getLevel } from '../utils';
 
 interface Props {
-    fetchUserStats: ReturnCodeStatsUserList[];
+    codeStatsDataCache: ReturnCodeStatsUserList[];
 }
 
-const { fetchUserStats } = Astro.props;
+const { codeStatsDataCache } = Astro.props;
 ---
 {
-    fetchUserStats.map((
+    codeStatsDataCache.map((
         { displayName, gravaterURL, totalXP, topMachine, topLanguages }, index
     ) => (
         <Card class="sl-card">
             <div class="card-content">
 
-                <Avatar image={ gravaterURL || "" } label={displayName + "'s Gravatar Image"} />
+                <Avatar 
+                    image={ gravaterURL || "" } 
+                    label={ displayName + "'s Gravatar Image" } 
+                    />
 
                 <div class="name">
                     { displayName }
                 </div>
 
-                <div class="language-group">
+                <div>
                     { // @ts-expect-error: topLanguages is an `Object` Type
                         topLanguages.first && (
                         <div class="languages">
-                            { // @ts-expect-error: topLanguages is an `Object` Type 
+                            1. { // @ts-expect-error: topLanguages is an `Object` Type 
                                 topLanguages.first 
                             }
                         </div>
@@ -34,7 +37,7 @@ const { fetchUserStats } = Astro.props;
                     { // @ts-expect-error: topLanguages is an `Object` Type
                         topLanguages.second && (
                         <div class="languages">
-                            { // @ts-expect-error: topLanguages is an `Object` Type
+                            2. { // @ts-expect-error: topLanguages is an `Object` Type
                                 topLanguages.second 
                             }
                         </div>
@@ -42,7 +45,7 @@ const { fetchUserStats } = Astro.props;
                     { // @ts-expect-error: topLanguages is an `Object` Type
                         topLanguages.third && (
                         <div class="languages">
-                            { // @ts-expect-error: topLanguages is an `Object` Type
+                            3. { // @ts-expect-error: topLanguages is an `Object` Type
                                 topLanguages.third 
                             }
                         </div>
@@ -61,7 +64,9 @@ const { fetchUserStats } = Astro.props;
                     <div class="ranklabel">
                         Rank:
                     </div>
-                    # { index + 1 }
+                    <div class="rankvalue">
+                        # { index + 1 }
+                    </div>
                 </div>
 
             </div>

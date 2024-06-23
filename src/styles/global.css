@@ -24,40 +24,42 @@ main {
     --uno-apply: "flex-none drop-shadow-xl";
 }
 
+.card-content div {
+	--uno-apply: "text-lg flex flex-col content-center justify-center items-center w-full";
+}
+
 .card-content .name {
-	--uno-apply: "text-lg flex justify-center w-full text-secondary font-bold";
+	--uno-apply: "text-secondary";
 }
-
-.card-content .language-group {
-	--uno-apply: "flex flex-col w-full";
-}
-
 .card-content .languages {
-	--uno-apply: "text-lg flex justify-center w-full text-accent font-bold";
+	--uno-apply: "text-accent";
 }
 
 .card-content .machine {
-	--uno-apply: "text-sm flex justify-center w-full text-secondary font-bold";
+	--uno-apply: "text-secondary";
 }
 
 .card-content .level {
-	--uno-apply: "text-2xl flex justify-center w-full text-accent font-bold";
+	--uno-apply: "text-accent";
 }
 
 .card-content .rank {
-	--uno-apply: "text-4xl flex justify-center w-full text-secondary font-bold";
+	--uno-apply: "text-secondary";
 }
 
 .card-content .header {
-	--uno-apply: "text-lg font-bold flex justify-center w-full drop-shadow-xl";
+	--uno-apply: "text-xl font-bold flex justify-center w-full drop-shadow-xl";
 }
 
 @media screen and (max-width: 767px) {
-	.card-content .ranklabel {
-		--uno-apply: "pr-2 text-lg";
+	.card-content .rank .ranklabel {
+		--uno-apply: "text-lg shrink px-0";
+	}
+	.card-content .rank .rankvalue {
+		--uno-apply: "shrink px-0";
 	}
 	.card-content .rank, .card-content .level {
-		--uno-apply: "text-lg"
+		--uno-apply: "text-lg flex flex-row justify-center content-center items-center px-0 gap-2 w-fit";
 	}
 }
 

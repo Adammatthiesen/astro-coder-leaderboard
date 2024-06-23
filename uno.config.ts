@@ -15,7 +15,7 @@ export default defineConfig({
         }),
         presetTypography(),
         presetDaisy({
-            themes: ["nord", "synthwave"],
+            themes: ["winter", "synthwave"],
             darkTheme: "synthwave",
         }),
         presetIcons({

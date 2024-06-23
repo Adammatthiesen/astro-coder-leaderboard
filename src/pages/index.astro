@@ -1,16 +1,20 @@
 ---
+import { db, UserList } from 'astro:db';
 import { TitleElement, HeaderCard, UserCard } from '../components/index-components';
 import Layout from '../layouts/Layout.astro';
 import type { UserListType } from '../types';
 import { returnCodeStatsUserList } from '../utils';
 
-const UserList: UserListType = [
+const dbUserList = db.select(UserList)
+
+const ManualUserList: UserListType = [
     { id: 0, displayName: "Adam Matthiesen", codestatsUsername: "adamm2047", gravatarEmail: "adam@matthiesen.xyz" },
     { id: 1, displayName: "Bryceguy", codestatsUsername: "Bryce", gravatarEmail: "brycetrussell@gmail.com" },
-    { id: 2, displayName: "Jumper", codestatsUsername: "Jumper" }
+    { id: 2, displayName: "Jumper", codestatsUsername: "Jumper" },
+	{ id: 3, displayName: "Dreyfus", codestatsUsername: "dreyfus" }
 ];
 
-const fetchUserStats = await returnCodeStatsUserList(UserList);
+const codeStatsDataCache = await returnCodeStatsUserList(ManualUserList);
 ---
 
 <Layout title="Astro Community Code::Stats Leaderboard">
@@ -20,7 +24,7 @@ const fetchUserStats = await returnCodeStatsUserList(UserList);
 
 		<HeaderCard />
 
-		<UserCard {fetchUserStats} />
+		<UserCard {codeStatsDataCache} />
 
 	</main>
 </Layout>

@@ -6,3 +6,9 @@ export type codeStatsApiResponse = {
     total_xp: number;
     user: string;
 };
+
+export type codeStatsApiError = {
+    error: string;
+};
+
+export type CodeStatsApiResponseOrError = codeStatsApiResponse & codeStatsApiError;

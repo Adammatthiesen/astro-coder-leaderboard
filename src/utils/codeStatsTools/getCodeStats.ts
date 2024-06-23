@@ -1,14 +1,8 @@
-import type { codeStatsApiResponse } from "../../types";
-
-type JsonError = {
-    error: string;
-};
-
-type CodeStatsOrError = codeStatsApiResponse & JsonError;
+import type { codeStatsApiResponse, CodeStatsApiResponseOrError } from "../../types";
 
 export const getCodeStats = async (username: string): Promise<codeStatsApiResponse> => {
     const data = await fetch(`https://codestats.net/api/users/${username}`);
-    const json: CodeStatsOrError = await data.json();
+    const json: CodeStatsApiResponseOrError = await data.json();
     if (json.error) {
         return {} as codeStatsApiResponse;
     }

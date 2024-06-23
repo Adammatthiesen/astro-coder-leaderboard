@@ -8,4 +8,4 @@ export { languageFilter, languageFix, toPascalCase } from "./langTools";
 export { createGravatar } from "./userTools";
 
 // Misc tools
-export { isNewDateMoreThan24HoursLater } from "./miscTools";
+export { getCodeStatsData, getSiteData, getUserList, isNewDateMoreThan24HoursLater, createCodeStatsDataCache, updateCodeStatsDataEntry, updateSiteData, addNewUser } from "./miscTools";

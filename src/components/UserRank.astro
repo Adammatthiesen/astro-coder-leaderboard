@@ -1,0 +1,13 @@
+---
+type Props = {
+    index: number;
+}
+
+const { index } = Astro.props;
+---
+<div class="ranklabel">
+    Rank:
+</div>
+<div class="rankvalue">
+    # { index + 1 }
+</div>

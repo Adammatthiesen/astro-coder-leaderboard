@@ -1,7 +1,9 @@
 ---
-import { Avatar, Card } from 'astrolace:components';
+import { Avatar, Card, Tooltip } from 'astrolace:components';
 import type { ReturnCodeStatsUserList } from '../types';
-import { getLevel } from '@utils/index';
+import TopLanguages from './TopLanguages.astro';
+import LevelAndProgress from './LevelAndProgress.astro';
+import UserRank from './UserRank.astro';
 
 interface Props {
     codeStatsDataCache: ReturnCodeStatsUserList[];
@@ -11,45 +13,19 @@ const { codeStatsDataCache } = Astro.props;
 ---
 {
     codeStatsDataCache.map((
-        { displayName, gravatarURL, totalXP, topMachine, topLanguages }, index
+        { displayName, gravatarURL, totalXP, topMachine, topLanguages, codestatsUsername }, index
     ) => (
         <Card class="sl-card">
             <div class="card-content">
 
-                <Avatar 
-                    image={ gravatarURL || "" } 
-                    label={ displayName + "'s Gravatar Image" } 
-                    />
+                <Avatar image={ gravatarURL || "" } label={ displayName + "'s Gravatar Image" } />
 
                 <div class="name">
                     { displayName }
                 </div>
 
                 <div>
-                    { // @ts-expect-error: topLanguages is an `Object` Type
-                        topLanguages.first && (
-                        <div class="languages">
-                            1. { // @ts-expect-error: topLanguages is an `Object` Type 
-                                topLanguages.first 
-                            }
-                        </div>
-                    )}
-                    { // @ts-expect-error: topLanguages is an `Object` Type
-                        topLanguages.second && (
-                        <div class="languages">
-                            2. { // @ts-expect-error: topLanguages is an `Object` Type
-                                topLanguages.second 
-                            }
-                        </div>
-                    )}
-                    { // @ts-expect-error: topLanguages is an `Object` Type
-                        topLanguages.third && (
-                        <div class="languages">
-                            3. { // @ts-expect-error: topLanguages is an `Object` Type
-                                topLanguages.third 
-                            }
-                        </div>
-                    )}
+                    <TopLanguages {topLanguages} />
                 </div>
 
                 <div class="machine">
@@ -57,17 +33,21 @@ const { codeStatsDataCache } = Astro.props;
                 </div>
 
                 <div class="level">
-                    Level { getLevel(totalXP) }
+                    <LevelAndProgress {totalXP} />
                 </div>
 
                 <div class="rank">
-                    <div class="ranklabel">
-                        Rank:
-                    </div>
-                    <div class="rankvalue">
-                        # { index + 1 }
-                    </div>
+                    <UserRank {index} />
                 </div>
+
+                <profilelink>
+                    <Tooltip>
+                        <i slot="content">View Code::Stats Profile</i>
+                        <a href={`https://codestats.net/users/${codestatsUsername}`} target="_blank" rel="noopener noreferrer">
+                            <div class="text-primary i-mdi:person-arrow-right w-32px h-32px">Profile</div>
+                        </a>
+                    </Tooltip>
+                </profilelink>
 
             </div>
         </Card>

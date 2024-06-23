@@ -1,4 +1,4 @@
-import { getCodeStats, languageFix, languageFilter, createGravatar } from "@utils/index";
+import { getCodeStats, languageFix, languageFilter, createGravatar } from "../index";
 import type { ReturnCodeStatsUserList, UserListType } from "../../types";
 
 export const returnCodeStatsUserList = async (userList: UserListType) => {
@@ -32,24 +32,42 @@ export const returnCodeStatsUserList = async (userList: UserListType) => {
         if (languageList.length > 0) {
             if (languageList.length === 1) {
                 topLanguages = {
-                    first: languageFix(languageList[0][0]),
+                    first: {
+                        name: languageFix(languageList[0][0]),
+                        xps: languageList[0][1].xps
+                    },
                 }
             }
             if (languageList.length === 2) {
                 languageList.sort((a, b) => b[1].xps - a[1].xps);
 
                 topLanguages = {
-                    first: languageFix(languageList[0][0]),
-                    second: languageFix(languageList[1][0]),
+                    first: {
+                        name: languageFix(languageList[0][0]),
+                        xps: languageList[0][1].xps
+                    },
+                    second: {
+                        name: languageFix(languageList[1][0]),
+                        xps: languageList[1][1].xps
+                    },
                 }
             }
             if (languageList.length > 2) {
                 languageList.sort((a, b) => b[1].xps - a[1].xps);
 
                 topLanguages = {
-                    first: languageFix(languageList[0][0]),
-                    second: languageFix(languageList[1][0]),
-                    third: languageFix(languageList[2][0]),
+                    first: {
+                        name: languageFix(languageList[0][0]),
+                        xps: languageList[0][1].xps
+                    },
+                    second: {
+                        name: languageFix(languageList[1][0]),
+                        xps: languageList[1][1].xps
+                    },
+                    third: {
+                        name: languageFix(languageList[2][0]),
+                        xps: languageList[2][1].xps
+                    },
                 }
             }
         }

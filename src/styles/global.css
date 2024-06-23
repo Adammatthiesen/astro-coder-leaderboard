@@ -51,6 +51,17 @@ main {
 	--uno-apply: "text-xl font-bold flex justify-center w-full drop-shadow-xl";
 }
 
+.card-content profilelink {
+	position: absolute;
+	right: 2rem;
+	top: 50%;
+	vertical-align: middle;
+} 
+.card-content profilelink sl-tooltip, 
+.card-content profilelink sl-tooltip a {
+	vertical-align: middle;
+}
+
 @media screen and (max-width: 767px) {
 	.card-content .rank .ranklabel {
 		--uno-apply: "text-lg shrink px-0";
@@ -58,7 +69,13 @@ main {
 	.card-content .rank .rankvalue {
 		--uno-apply: "shrink px-0";
 	}
-	.card-content .rank, .card-content .level {
+	.card-content .rank .levelnumber {
+		--uno-apply: "text-lg shrink px-0";
+	}
+	.card-content .rank .levelprogress {
+		--uno-apply: "shrink px-0";
+	}
+	.card-content .rank {
 		--uno-apply: "text-lg flex flex-row justify-center content-center items-center px-0 gap-2 w-fit";
 	}
 }
@@ -71,4 +88,14 @@ main {
 
 sl-avatar {
 	--size: 5rem;
+}
+
+.progressbar {
+	--height: 24px;
+}
+
+.progressbar::part(label) {
+	font-weight: bolder;
+	font-size: 1rem;
+	text-align: center;
 }

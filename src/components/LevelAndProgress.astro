@@ -1,0 +1,24 @@
+---
+import { XPCalculator } from "../utils/index";
+import { ProgressBar } from "astrolace:components";
+
+type Props = {
+    totalXP: number;
+};
+
+const { totalXP } = Astro.props;
+---
+<div class="levelnumber">
+    Level { XPCalculator.getLevel(totalXP) } { totalXP > 1 && `(${ totalXP } XP)` }
+</div>
+<div class="levelprogress">
+    { totalXP > 1 && (
+        <ProgressBar 
+            value={XPCalculator.getLevelProgress(totalXP)} 
+            class:list={"w-32 progressbar"}
+            label={XPCalculator.getLevelProgress(totalXP) + "% to next level"}
+            >
+                {XPCalculator.getLevelProgress(totalXP)}%
+        </ProgressBar>
+    )}
+</div>

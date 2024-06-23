@@ -1,9 +1,11 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import { TitleElement, HeaderCard, UserCard } from '@components/index-components';
-import { getCodeStatsDataCache } from '@utils/index';
+import Layout from '../layouts/Layout.astro';
+import { TitleElement, HeaderCard, UserCard } from '../components/index-components';
+import { getCodeStatsDataCache } from '../utils';
 
-const codeStatsDataCache = await getCodeStatsDataCache(new Date());
+let currentDate = new Date();
+
+const codeStatsDataCache = await getCodeStatsDataCache(currentDate);
 ---
 
 <Layout title="Astro Community Code::Stats Leaderboard">

@@ -1,10 +1,10 @@
 import { CodeStatsDataCache, SiteData, UserList, db, eq } from "astro:db";
-import { isNewDateMoreThan24HoursLater, returnCodeStatsUserList } from "@utils/index";
+import { isNewDateMoreThan24HoursLater, returnCodeStatsUserList } from "../index";
 import type { ReturnCodeStatsUserList } from "../../types";
 
 export async function getCodeStatsDataCache( 
     currentDate: Date 
-): Promise<ReturnCodeStatsUserList[]>{
+): Promise<ReturnCodeStatsUserList[]> {
 
     // Get the stored site data
     const siteData = await db.select().from(SiteData).where(eq(SiteData.id, 1)).get()
@@ -60,5 +60,4 @@ export async function getCodeStatsDataCache(
         // Return the new CodeStatsDataCache
         return NEW_codeStatsDataCache.sort((a, b) => b.totalXP - a.totalXP)
     }
-
 }

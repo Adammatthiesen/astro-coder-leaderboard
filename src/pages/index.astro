@@ -1,20 +1,9 @@
 ---
-import { db, UserList } from 'astro:db';
 import { TitleElement, HeaderCard, UserCard } from '../components/index-components';
 import Layout from '../layouts/Layout.astro';
-import type { UserListType } from '../types';
-import { returnCodeStatsUserList } from '../utils';
+import { getCodeStatsDataCache } from '../utils';
 
-const dbUserList = db.select(UserList)
-
-const ManualUserList: UserListType = [
-    { id: 0, displayName: "Adam Matthiesen", codestatsUsername: "adamm2047", gravatarEmail: "adam@matthiesen.xyz" },
-    { id: 1, displayName: "Bryceguy", codestatsUsername: "Bryce", gravatarEmail: "brycetrussell@gmail.com" },
-    { id: 2, displayName: "Jumper", codestatsUsername: "Jumper" },
-	{ id: 3, displayName: "Dreyfus", codestatsUsername: "dreyfus" }
-];
-
-const codeStatsDataCache = await returnCodeStatsUserList(ManualUserList);
+const codeStatsDataCache = await getCodeStatsDataCache(new Date());
 ---
 
 <Layout title="Astro Community Code::Stats Leaderboard">

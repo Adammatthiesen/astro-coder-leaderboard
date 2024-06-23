@@ -11,13 +11,13 @@ const { codeStatsDataCache } = Astro.props;
 ---
 {
     codeStatsDataCache.map((
-        { displayName, gravaterURL, totalXP, topMachine, topLanguages }, index
+        { displayName, gravatarURL, totalXP, topMachine, topLanguages }, index
     ) => (
         <Card class="sl-card">
             <div class="card-content">
 
                 <Avatar 
-                    image={ gravaterURL || "" } 
+                    image={ gravatarURL || "" } 
                     label={ displayName + "'s Gravatar Image" } 
                     />
 

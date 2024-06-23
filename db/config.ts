@@ -1,6 +1,6 @@
-import { column, defineTable } from "astro:db";
+import { column, defineDb, defineTable } from "astro:db";
 
-export const UserList = defineTable({
+const UserList = defineTable({
     columns: {
         id: column.number({ primaryKey: true }),
         displayName: column.text(),
@@ -9,7 +9,7 @@ export const UserList = defineTable({
     }
 });
 
-export const CodeStatsDataCache = defineTable({
+const CodeStatsDataCache = defineTable({
     columns: {
         id: column.number({ primaryKey: true }),
         gravatarURL: column.text({ optional: true }),
@@ -21,9 +21,17 @@ export const CodeStatsDataCache = defineTable({
     }
 });
 
-export const SiteData = defineTable({
+const SiteData = defineTable({
     columns: {
         id: column.number({ primaryKey: true }),
         lastCodeStatsCheck: column.date(),
     }
+});
+
+export default defineDb({
+    tables: {
+        SiteData,
+        CodeStatsDataCache,
+        UserList,
+    },
 });

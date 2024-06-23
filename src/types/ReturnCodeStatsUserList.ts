@@ -1,6 +1,6 @@
 export type ReturnCodeStatsUserList = {
     id: number;
-    gravaterURL: string|null;
+    gravatarURL: string|null;
     displayName: string;
     codestatsUsername: string;
     totalXP: number;

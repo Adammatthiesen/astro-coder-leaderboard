@@ -1,7 +1,5 @@
-import { getCodeStats, languageFix } from ".";
+import { getCodeStats, languageFix, languageFilter, createGravatar } from ".";
 import type { ReturnCodeStatsUserList, UserListType } from "../types";
-import { languageFilter } from "./LanguageFilter";
-import { createGravatar } from "./createGravatarURL";
 
 export const returnCodeStatsUserList = async (userList: UserListType) => {
     const returnArray: ReturnCodeStatsUserList[] = [];
@@ -56,9 +54,9 @@ export const returnCodeStatsUserList = async (userList: UserListType) => {
             }
         }
 
-        let gravaterURL = null;
+        let gravatarURL = null;
         if (user.gravatarEmail) {
-            gravaterURL = await createGravatar(user.gravatarEmail);
+            gravatarURL = await createGravatar(user.gravatarEmail);
         }
 
         let totalXP = 0;
@@ -70,7 +68,7 @@ export const returnCodeStatsUserList = async (userList: UserListType) => {
             id: user.id,
             displayName: user.displayName,
             codestatsUsername: user.codestatsUsername,
-            gravaterURL,
+            gravatarURL,
             totalXP,
             topMachine,
             topLanguages

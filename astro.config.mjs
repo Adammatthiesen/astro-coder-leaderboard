@@ -14,8 +14,6 @@ export default defineConfig({
     integrations: [
         db(),
         unoCSS({ injectReset: true }),
-        astrolace({
-            verbose: true,
-        }),
+        astrolace({ verbose: false }),
     ],
 });

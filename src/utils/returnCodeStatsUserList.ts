@@ -75,7 +75,7 @@ export const returnCodeStatsUserList = async (userList: UserListType) => {
         });
     }
 
-    returnArray.sort((a, b) => b.totalXP - a.totalXP);
+    returnArray;
 
     return returnArray;
 }

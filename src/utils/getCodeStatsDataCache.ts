@@ -33,14 +33,14 @@ export async function getCodeStatsDataCache(
         const NEW_codeStatsDataCache = await db.select().from(CodeStatsDataCache)
 
         // Return the new CodeStatsDataCache
-        return NEW_codeStatsDataCache
+        return NEW_codeStatsDataCache.sort((a, b) => b.totalXP - a.totalXP)
 
     } else {
         // If the date is not more than 24 hours later, return the CodeStatsDataCache
 
         // Check if the CodeStatsDataCache is empty
         if (codeStatsDataCache.length > 0) {
-            return codeStatsDataCache
+            return codeStatsDataCache.sort((a, b) => b.totalXP - a.totalXP)
         }
 
         // If the cache is empty, Update the CodeStatsDataCache
@@ -58,7 +58,7 @@ export async function getCodeStatsDataCache(
         const NEW_codeStatsDataCache = await db.select().from(CodeStatsDataCache)
 
         // Return the new CodeStatsDataCache
-        return NEW_codeStatsDataCache
+        return NEW_codeStatsDataCache.sort((a, b) => b.totalXP - a.totalXP)
     }
 
 }

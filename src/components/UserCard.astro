@@ -42,7 +42,7 @@ const { codeStatsDataCache } = Astro.props;
 
                 <profilelink>
                     <Tooltip>
-                        <i slot="content">View Code::Stats Profile</i>
+                        <i slot="content">View <b>{displayName}</b>'s Code::Stats Profile</i>
                         <a href={`https://codestats.net/users/${codestatsUsername}`} target="_blank" rel="noopener noreferrer">
                             <div class="text-primary i-mdi:person-arrow-right w-32px h-32px">Profile</div>
                         </a>

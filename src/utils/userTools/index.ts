@@ -1,1 +1,1 @@
-export * from "./createGravatarURL";
+export { createGravatar } from "./createGravatarURL";

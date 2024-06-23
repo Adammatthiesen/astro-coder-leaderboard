@@ -1,4 +1,4 @@
-export * from "./getCodeStats";
-export * from "./getCodeStatsDataCache";
-export * from "./returnCodeStatsUserList";
-export * from "./xpCalculator";
+export { getCodeStats } from "./getCodeStats";
+export { getCodeStatsDataCache } from "./getCodeStatsDataCache";
+export { returnCodeStatsUserList } from "./returnCodeStatsUserList";
+export { XPCalculator } from "./xpCalculator";

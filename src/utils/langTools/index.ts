@@ -1,3 +1,3 @@
-export * from "./LanguageFilter";
-export * from "./languageFix";
-export * from "./toPascalCase";
+export { languageFilter } from "./LanguageFilter";
+export { languageFix } from "./languageFix";
+export { toPascalCase } from "./toPascalCase";

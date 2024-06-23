@@ -1,11 +1,11 @@
 // CodeStats api handling
-export * from "./codeStatsTools";
+export { XPCalculator, getCodeStats, getCodeStatsDataCache, returnCodeStatsUserList } from "./codeStatsTools";
 
 // Language tools
-export * from "./langTools";
+export { languageFilter, languageFix, toPascalCase } from "./langTools";
 
 // User tools
-export * from "./userTools";
+export { createGravatar } from "./userTools";
 
 // Misc tools
-export * from "./miscTools";
+export { isNewDateMoreThan24HoursLater } from "./miscTools";

@@ -1,3 +1,3 @@
-export * from './codeStatsApiResponse';
-export * from './ReturnCodeStatsUserList';
-export * from './userlist';
+export type { codeStatsApiResponse } from './codeStatsApiResponse';
+export type { ReturnCodeStatsUserList } from './ReturnCodeStatsUserList';
+export type { UserListType } from './userlist';

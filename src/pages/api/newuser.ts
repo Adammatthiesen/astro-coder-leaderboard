@@ -19,7 +19,7 @@ export async function POST(context: APIContext): Promise<Response> {
 
     const currentUsers = await getUserList();
 
-    if (currentUsers.find((user) => user.codestatsUsername === codestatsUsername)) {
+    if (currentUsers.find((user) => user.codestatsUsername === codestatsUsername || user.displayName === displayName)) {
         return new Response("User already exists", { status: 400, statusText: "Bad Request" });
     }
 

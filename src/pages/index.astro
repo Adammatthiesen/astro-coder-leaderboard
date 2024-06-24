@@ -1,19 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { TitleElement, HeaderCard, UserCard } from '../components/index-components';
-import { getCodeStatsDataCache } from '../utils';
+import { getCodeStatsDataCache, getSiteData } from '../utils';
+import { Divider } from 'astrolace:components';
 
-let currentDate = new Date();
+// Get the last time the code::stats data was checked
+const { lastCodeStatsCheck } = await getSiteData();
 
-const codeStatsDataCache = await getCodeStatsDataCache(currentDate);
+// Get the code::stats data from the cache or fetch new data if the cache is stale
+const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck,new Date());
 ---
 
 <Layout title="Astro Community Code::Stats Leaderboard">
 	<main>
 		
-		<TitleElement />
+		<TitleElement {lastCodeStatsCheck} /> 
 
 		<HeaderCard />
+
+		<Divider class:list={"divider"}/>
 
 		<UserCard {codeStatsDataCache} />
 

@@ -1,0 +1,26 @@
+---
+import { Button, Icon } from "astrolace:components";
+
+---
+
+<form id="updatecache" class="updatecache-form" action="/api/updatecache" method="post">
+    <Button 
+        form="updatecache" 
+        type="submit"
+        size="small"
+        variant="primary"
+        class:list={"updatecache-button"}>
+        <Icon slot="prefix" name="arrow-clockwise" />
+        Update List
+    </Button>
+</form>
+
+<script>
+import type { SlButton } from "astrolace:types"
+
+    const updateButton = document.getElementsByClassName("updatecache-button")[0] as SlButton
+
+    updateButton.onclick = async () => {
+        updateButton.loading = true
+    }
+</script>

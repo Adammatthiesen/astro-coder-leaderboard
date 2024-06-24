@@ -1,15 +1,32 @@
 /* Global Styles */
 
 main {
-	--uno-apply: "flex flex-col justify-center justify-items-center max-w-[100vw] p-4 md:p-24";
+	--uno-apply: "flex flex-col justify-center justify-items-center max-w-[100vw] p-4 md:p-12";
 }
 
 .screen-title-holder {
-	--uno-apply: "flex justify-center pb-8";
+	--uno-apply: "flex flex-col justify-center justify-items-center";
+	align-items: center;
 }
 
 .screen-title {
 	--uno-apply: "text-4xl font-bold text-primary";
+}
+
+.last-check {
+	--uno-apply: "text-gray-400 text-sm pt-2 font-italic";
+}
+
+.last-check sl-relative-time {
+	--uno-apply: "font-bold";
+}
+
+.screen-title-buttons {
+	--uno-apply: "flex flex-col w-full md:flex-row md:px-8rem pt-2";
+}
+
+.sl-card-header {
+	--uno-apply: "drop-shadow-2xl";
 }
 
 .sl-card {
@@ -31,6 +48,7 @@ main {
 .card-content .name {
 	--uno-apply: "text-secondary";
 }
+
 .card-content .languages {
 	--uno-apply: "text-accent";
 }
@@ -49,6 +67,10 @@ main {
 
 .card-content .header {
 	--uno-apply: "text-xl font-bold flex justify-center w-full drop-shadow-xl";
+}
+
+.card-content .no-user-data {
+	--uno-apply: "text-primary text-4xl font-bold";
 }
 
 .card-content profilelink {
@@ -90,6 +112,10 @@ sl-avatar {
 	--size: 5rem;
 }
 
+.divider {
+	--width: 4px;
+}
+
 .progressbar {
 	--height: 24px;
 }
@@ -98,4 +124,9 @@ sl-avatar {
 	font-weight: bolder;
 	font-size: 1rem;
 	text-align: center;
+}
+
+.updatecache-form {
+	position: relative;
+	padding-left: 2rem;
 }

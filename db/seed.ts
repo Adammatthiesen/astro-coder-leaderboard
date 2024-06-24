@@ -9,6 +9,6 @@ export default async function() {
     ]);
 
     await db.insert(SiteData).values([
-        { id: 1, lastCodeStatsCheck: new Date() }
+        { id: 1, lastCodeStatsCheck: new Date("2022-10-13") }
     ]);
 };

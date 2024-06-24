@@ -6,7 +6,7 @@ import astrolace from '@matthiesenxyz/astrolace';
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://codeleaderboard.matthiesen.dev",
+    site: "https://astrocoderstats.fun",
     output: "server",
     adapter: node({
         mode: "standalone" 

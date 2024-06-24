@@ -1,16 +1,14 @@
 import { 
-    getCodeStatsData, getSiteData, getUserList, 
+    getCodeStatsData, getUserList, 
     isNewDateMoreThan24HoursLater, returnCodeStatsUserList, 
     createCodeStatsDataCache, updateCodeStatsDataEntry, 
     updateSiteData } from "../index";
 import type { ReturnCodeStatsUserList } from "../../types";
 
 export async function getCodeStatsDataCache( 
-    currentDate: Date 
+    lastCodeStatsCheck: Date,
+    currentDate: Date,
 ): Promise<ReturnCodeStatsUserList[]> {
-
-    // Get the stored site data
-    const siteData = await getSiteData();
 
     // Get current stored Cache
     const codeStatsDataCache = await getCodeStatsData();
@@ -18,7 +16,6 @@ export async function getCodeStatsDataCache(
     // Get the user list
     const dbUserList = await getUserList();
 
-    // Check if the lastCodeStatsCheck is more than 24 hours later
     if (codeStatsDataCache.length === 0) {
         // If the CodeStatsDataCache is empty, Update the CodeStatsDataCache
         const newCodeStatsData = await returnCodeStatsUserList(dbUserList)
@@ -34,10 +31,12 @@ export async function getCodeStatsDataCache(
 
         // Return the new CodeStatsDataCache
         return NEW_codeStatsDataCache.sort((a, b) => b.totalXP - a.totalXP)
-    } else 
+    }
+
+    // Check if the lastCodeStatsCheck is more than 24 hours later
     
     // If the date is more than 24 hours later, Update the CodeStatsDataCache
-    if ( isNewDateMoreThan24HoursLater( siteData.lastCodeStatsCheck, currentDate ) || codeStatsDataCache.length !== 0 ) {
+    if ( isNewDateMoreThan24HoursLater(lastCodeStatsCheck, currentDate ) ) {
         // get the new CodeStatsData
         const newCodeStatsData = await returnCodeStatsUserList(dbUserList)
 

@@ -12,7 +12,19 @@ interface Props {
 const { codeStatsDataCache } = Astro.props;
 ---
 {
-    codeStatsDataCache.map((
+    codeStatsDataCache.length === 0 && (
+        <Card class="sl-card">
+            <div class="card-content">
+                <div class="no-user-data">
+                    No User Data Found.
+                </div>
+            </div>
+        </Card>
+    )
+}
+
+{ 
+    codeStatsDataCache.length !== 0 && codeStatsDataCache.map((
         { displayName, gravatarURL, totalXP, topMachine, topLanguages, codestatsUsername }, index
     ) => (
         <Card class="sl-card">

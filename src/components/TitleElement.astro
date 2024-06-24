@@ -1,9 +1,24 @@
 ---
 import { Code } from "astro:components";
+import UpdateCacheButton from "./UpdateCacheButton.astro";
+import { Divider, RelativeTime } from "astrolace:components";
+
+interface Props {
+    lastCodeStatsCheck: Date;
+}
+
+const { lastCodeStatsCheck } = Astro.props;
 
 ---
 <div class="screen-title-holder">
     <h1 class="screen-title">
-        Astro Community <Code code={`Code::Stats`} inline={true} /> Leaderboard
+        Astro Community <Code code={`Code::Stats`} inline={true} /> Leaderboard 
     </h1>
+    <div class="last-check">
+        Last Updated: <RelativeTime date={lastCodeStatsCheck.toISOString()} sync />
+    </div>
+    <div class="screen-title-buttons">
+        <UpdateCacheButton />
+    </div>
+    <Divider class:list={"divider"}/>
 </div>

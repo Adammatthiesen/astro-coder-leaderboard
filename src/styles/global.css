@@ -22,7 +22,7 @@ main {
 }
 
 .screen-title-buttons {
-	--uno-apply: "flex flex-col w-full md:flex-row md:px-8rem pt-2";
+	--uno-apply: "flex flex-col w-full md:flex-row md:px-8rem pt-2 gap-4";
 }
 
 .sl-card-header {
@@ -110,10 +110,6 @@ main {
 
 sl-avatar {
 	--size: 5rem;
-}
-
-.divider {
-	--width: 4px;
 }
 
 .progressbar {

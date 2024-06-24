@@ -21,8 +21,8 @@ dependencies:
     specifier: ^1.1.8
     version: 1.1.8
   '@matthiesenxyz/astrolace':
-    specifier: ^0.1.1
-    version: 0.1.1(@astrojs/db@0.11.6)(@types/react@18.3.3)(astro@4.11.0)
+    specifier: ^0.1.2
+    version: 0.1.2(@astrojs/db@0.11.6)(@types/react@18.3.3)(astro@4.11.0)
   '@matthiesenxyz/unocss-preset-daisyui':
     specifier: ^0.1.0
     version: 0.1.0(daisyui@4.12.2)(unocss@0.61.0)
@@ -1145,8 +1145,8 @@ packages:
       '@lit-labs/ssr-dom-shim': 1.2.0
     dev: false
 
-  /@matthiesenxyz/astrolace@0.1.1(@astrojs/db@0.11.6)(@types/react@18.3.3)(astro@4.11.0):
-    resolution: {integrity: sha512-aKkEVlbeyjXmqU9l4ZblkK9OOyFrn7X0LhVGKBqfjvgXmJ47korN1lpavAV+5WGRU47sF196EkopqBhPR/pyuw==}
+  /@matthiesenxyz/astrolace@0.1.2(@astrojs/db@0.11.6)(@types/react@18.3.3)(astro@4.11.0):
+    resolution: {integrity: sha512-2oCHis7xZs2/Phbpnu7nSmBPzmi/t4dWNSBQcOM55EBkBjHqJsQSqTBUHJZXLJkotd6KDbRC75ZausGWp7Ce+w==}
     peerDependencies:
       astro: '>=4.8.6'
     dependencies:

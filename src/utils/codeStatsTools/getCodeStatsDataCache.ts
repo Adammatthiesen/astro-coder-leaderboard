@@ -41,9 +41,7 @@ export async function getCodeStatsDataCache(
         const newCodeStatsData = await returnCodeStatsUserList(dbUserList)
 
         // Update the CodeStatsDataCache
-        for ( const entry of newCodeStatsData) {
-            await updateCodeStatsDataEntry(entry)
-        }
+        await updateCodeStatsDataEntry(newCodeStatsData)
 
         // Update the lastCodeStatsCheck
         await updateSiteData(currentDate)

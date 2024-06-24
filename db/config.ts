@@ -6,6 +6,7 @@ const UserList = defineTable({
         displayName: column.text(),
         codestatsUsername: column.text(),
         gravatarEmail: column.text({ optional: true }),
+        password: column.text({ optional: true }),
     }
 });
 

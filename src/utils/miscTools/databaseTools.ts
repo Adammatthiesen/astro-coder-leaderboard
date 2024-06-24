@@ -22,12 +22,14 @@ export const updateSiteData = async (
 }
 
 export const updateCodeStatsDataEntry = async (
-    newCodeStatsData: codeStatsDataEntry
+    newCodeStatsData: codeStatsDataEntry[]
 ) => {
+    await db.delete(CodeStatsDataCache)
+
     // Update the CodeStatsDataCache
-    return await db.update(CodeStatsDataCache)
-            .set(newCodeStatsData)
-            .where(eq(CodeStatsDataCache.id, newCodeStatsData.id))
+    return await db.insert(CodeStatsDataCache)
+            .values(newCodeStatsData)
+            .returning()
 }
 
 export const createCodeStatsDataCache = async (
@@ -51,24 +53,25 @@ export const getUserList = async (): Promise<userList[]> => {
 }
 
 export const addNewUser = async (
-    newUserData: userList
+    newUserData: Omit<userList, 'id'>
 ) => {
     const {
         codestatsUsername, 
         displayName, 
-        gravatarEmail
+        gravatarEmail, 
+        password
     } = newUserData;
     // Add a new user to the user list
     return await db.insert(UserList)
             .values({
                 displayName, 
                 codestatsUsername, 
-                gravatarEmail
+                gravatarEmail,
+                password
             })
             .returning()
             .then(() => {
                 console.log(`Added new user: ${displayName}`);
-                return 
             })
             .catch((err) => {
                 console.error(`Error adding new user: ${err}`);

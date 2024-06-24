@@ -9,6 +9,7 @@ export type userList = {
     displayName: string;
     codestatsUsername: string;
     gravatarEmail: string;
+    password?: string;
 }
 
 export type codeStatsDataEntry = {

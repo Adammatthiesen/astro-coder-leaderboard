@@ -10,11 +10,9 @@ export async function POST(context: APIContext) {
     const newCodeStatsData = await returnCodeStatsUserList(userList);
 
     // Update the CodeStatsDataCache
-    for ( const entry of newCodeStatsData ) {
-        await updateCodeStatsDataEntry(entry).catch((error) => {
-            return new Response(`Error: ${error}`, { status: 500, headers: { "Content-Type": "text/plain" }, statusText: "Error"});
-        });
-    }
+    await updateCodeStatsDataEntry(newCodeStatsData).catch((error) => {
+        return new Response(`Error: ${error}`, { status: 500, headers: { "Content-Type": "text/plain" }, statusText: "Error"});
+    });
 
     // Update the lastCodeStatsCheck
     await updateSiteData(new Date());

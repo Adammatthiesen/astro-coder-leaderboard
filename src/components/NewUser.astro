@@ -1,0 +1,98 @@
+---
+import { Alert, Divider, Icon } from "astrolace:components";
+import { Input } from "astrolace:components";
+import { Button, Dialog } from "astrolace:components";
+---
+<Dialog id="new-user-dialog" label="New User Creation">
+
+    <form id="new-user-creation" action="/api/newuser" method="post">
+
+        <Input name="display-name" label="Display Name" form="new-user-creation" 
+            inputmode="text" type="text" required />
+
+        <Divider />
+
+        <Input name="code-stats-username" label="Code::Stats Username" form="new-user-creation" 
+            inputmode="text" type="text" required />
+
+        <Divider />
+
+        <Input name="gravatar-email" label="Gravatar Email" form="new-user-creation" inputmode="email" 
+            type="email" help-text="Used to get your Avatar image from Gravatar.com" required />
+
+        <Divider />
+
+        <Input name="password" label="Password" form="new-user-creation" inputmode="text" type="password" 
+            help-text="This password will be required to edit your account in the future!" required />
+
+        <Divider />
+
+        <Input name="password-confirm" label="Confirm Password" form="new-user-creation" inputmode="text" 
+            type="password" help-text="Please confirm your password" required />
+
+        <Divider />
+
+        <Button type="submit" form="new-user-creation" variant="primary" size="small" class:list={"create-new-user-button"}>
+            Create User
+        </Button>
+
+    </form>
+
+    <Button slot="footer" variant="danger" size="small" class:list={"cancel-new-user"}>Cancel</Button>
+</Dialog>
+
+<Button variant="primary" size="small" class:list={"open-new-user-dialog"}>New User</Button>
+
+<div class="alert-toast">
+    <Alert variant="danger" duration={6000} closable>
+        <Icon slot="icon" name="alert-circle" />
+        <p id="newuser-form-error-toast"></p>
+    </Alert>
+</div>
+
+
+<script>
+import type { SlAlert, SlButton, SlDialog } from "astrolace:types";
+
+    const newUserDialog = document.getElementById('new-user-dialog') as SlDialog;
+    const openDialogButton = document.getElementsByClassName('open-new-user-dialog')[0] as SlButton;
+    const cancelDialogButton = document.getElementsByClassName('cancel-new-user')[0] as SlButton;
+    const newUserForm = document.getElementById('new-user-creation') as HTMLFormElement;
+    const newUserButton = document.getElementsByClassName('create-new-user-button')[0] as SlButton;
+    const alertContainer = document.querySelector('.alert-toast') as HTMLDivElement;
+    const formErrorToast = alertContainer.querySelector('sl-alert[variant="danger"]') as SlAlert;
+    const formErrorToastMessage = alertContainer.querySelector('#newuser-form-error-toast') as HTMLParagraphElement;
+
+    openDialogButton.addEventListener('click', () => {
+        newUserDialog.show();
+    });
+
+    cancelDialogButton.addEventListener('click', () => {
+        newUserDialog.hide();
+    });
+
+    newUserDialog.addEventListener('sl-request-close', event => {
+        if (event.detail.source === 'overlay') {
+            event.preventDefault();
+        }
+    });
+
+    newUserForm.addEventListener('submit', async (event) => {
+        newUserButton.loading = true;
+        event.preventDefault();
+        const formElement = event.target as HTMLFormElement;
+        const response = await fetch(formElement.action, {
+            method: formElement.method,
+            body: new FormData(formElement)
+        });
+        if (response.ok) {
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        } else {
+            newUserButton.loading = false;
+            formErrorToastMessage.innerText = `An error occurred while creating your user. Please try again later. Error: ${response.status} - ${response.body}`;
+            formErrorToast.toast();
+        }
+    });
+</script>

@@ -21,8 +21,8 @@ dependencies:
     specifier: ^1.1.8
     version: 1.1.8
   '@matthiesenxyz/astrolace':
-    specifier: ^0.1.0
-    version: 0.1.0(@astrojs/db@0.11.6)(@types/react@18.3.3)(astro@4.11.0)(vite@5.3.1)
+    specifier: ^0.1.1
+    version: 0.1.1(@astrojs/db@0.11.6)(@types/react@18.3.3)(astro@4.11.0)
   '@matthiesenxyz/unocss-preset-daisyui':
     specifier: ^0.1.0
     version: 0.1.0(daisyui@4.12.2)(unocss@0.61.0)
@@ -1145,20 +1145,19 @@ packages:
       '@lit-labs/ssr-dom-shim': 1.2.0
     dev: false
 
-  /@matthiesenxyz/astrolace@0.1.0(@astrojs/db@0.11.6)(@types/react@18.3.3)(astro@4.11.0)(vite@5.3.1):
-    resolution: {integrity: sha512-FGWcWEryft7MjeMG/ZCVKWuAPom8h9TpSalsN4R5DH5nPjv7Y2e6bheUnGmm/1Z4g5KcWYaoxVrtvgItI7/Cfg==}
+  /@matthiesenxyz/astrolace@0.1.1(@astrojs/db@0.11.6)(@types/react@18.3.3)(astro@4.11.0):
+    resolution: {integrity: sha512-aKkEVlbeyjXmqU9l4ZblkK9OOyFrn7X0LhVGKBqfjvgXmJ47korN1lpavAV+5WGRU47sF196EkopqBhPR/pyuw==}
     peerDependencies:
       astro: '>=4.8.6'
     dependencies:
       '@shoelace-style/shoelace': 2.15.1(@types/react@18.3.3)
       astro: 4.11.0
-      astro-integration-kit: 0.13.3(@astrojs/db@0.11.6)(astro@4.11.0)
+      astro-integration-kit: 0.14.0(@astrojs/db@0.11.6)(astro@4.11.0)
       lit: 3.1.4
-      vite-plugin-static-copy: 1.0.5(vite@5.3.1)
+      zod: 3.23.8
     transitivePeerDependencies:
       - '@astrojs/db'
       - '@types/react'
-      - vite
     dev: false
 
   /@matthiesenxyz/unocss-preset-daisyui@0.1.0(daisyui@4.12.2)(unocss@0.61.0):
@@ -1762,8 +1761,8 @@ packages:
       tslib: 2.6.3
     dev: false
 
-  /astro-integration-kit@0.13.3(@astrojs/db@0.11.6)(astro@4.11.0):
-    resolution: {integrity: sha512-hUEQMnZ7z+7ySPCX6mXnIr0BFZU1+49eQQBg4aHjKGz1o2oZ5tvuB9Tlyj/orRH9ubd+Gkd0SSoldz0BTNe4Rg==}
+  /astro-integration-kit@0.14.0(@astrojs/db@0.11.6)(astro@4.11.0):
+    resolution: {integrity: sha512-Tg85rlRRKEkTK2a02XJByvNOuzGN1eDIfAJxwHPUTOn/iE7yFxL9RaLqSdO8X8PxnbL4e1H6OkK6AVFnHZob9A==}
     peerDependencies:
       '@astrojs/db': ^0.9 || ^0.10 || ^0.11
       astro: ^4.4.1
@@ -2610,15 +2609,6 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /fs-extra@11.2.0:
-    resolution: {integrity: sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==}
-    engines: {node: '>=14.14'}
-    dependencies:
-      graceful-fs: 4.2.11
-      jsonfile: 6.1.0
-      universalify: 2.0.1
-    dev: false
-
   /fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -2994,14 +2984,6 @@ packages:
     resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
     engines: {node: '>=6'}
     hasBin: true
-    dev: false
-
-  /jsonfile@6.1.0:
-    resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
-    dependencies:
-      universalify: 2.0.1
-    optionalDependencies:
-      graceful-fs: 4.2.11
     dev: false
 
   /kind-of@6.0.3:
@@ -4506,11 +4488,6 @@ packages:
       unist-util-visit-parents: 6.0.1
     dev: false
 
-  /universalify@2.0.1:
-    resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
-    engines: {node: '>= 10.0.0'}
-    dev: false
-
   /unocss@0.61.0(postcss@8.4.38)(vite@5.3.1):
     resolution: {integrity: sha512-7642v5tHpEpHO9dl9sqYbKT/Ri4X4lmGHhj/znE4uheEfXcptPPiZ1/hVmQVciHUSI8CnQBqDwkZuxNPDG3bTQ==}
     engines: {node: '>=14'}
@@ -4597,19 +4574,6 @@ packages:
       '@types/unist': 3.0.2
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
-    dev: false
-
-  /vite-plugin-static-copy@1.0.5(vite@5.3.1):
-    resolution: {integrity: sha512-02k0Rox+buYdEOfeilKZSgs1gXfPf9RjVztZEIYZgVIxjsVZi6AXssjzdi+qW6zYt00d3bq+tpP2voVXN2fKLw==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    peerDependencies:
-      vite: ^5.0.0
-    dependencies:
-      chokidar: 3.6.0
-      fast-glob: 3.3.2
-      fs-extra: 11.2.0
-      picocolors: 1.0.1
-      vite: 5.3.1
     dev: false
 
   /vite@5.3.1:

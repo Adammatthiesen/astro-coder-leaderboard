@@ -11,6 +11,11 @@ export default defineConfig({
     adapter: node({
         mode: "standalone" 
     }),
+    vite: {
+        optimizeDeps: {
+            exclude: ["@resvg/resvg-js"]
+        },
+    },
     integrations: [
         db(),
         unoCSS({ injectReset: true }),

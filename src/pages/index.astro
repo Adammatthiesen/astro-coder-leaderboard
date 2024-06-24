@@ -11,7 +11,10 @@ const { lastCodeStatsCheck } = await getSiteData();
 const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck,new Date());
 ---
 
-<Layout title="Astro Community Code::Stats Leaderboard">
+<Layout 
+	title="Astro Community Code::Stats Leaderboard" 
+	description='A Community Leaderboard for the Astro Community that uses code::stats data to rank members of the community based on how much they code! (This is 100% for fun!)'
+	>
 	<main>
 		
 		<TitleElement {lastCodeStatsCheck} /> 

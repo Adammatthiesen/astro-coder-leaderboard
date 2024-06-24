@@ -1,7 +1,7 @@
 /* Global Styles */
 
 main {
-	--uno-apply: "flex flex-col justify-center justify-items-center max-w-[100vw] p-4 md:p-12";
+	--uno-apply: "flex flex-col justify-center justify-items-center max-w-[100vw] p-4 md:p-12 bg-base-100";
 }
 
 .screen-title-holder {

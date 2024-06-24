@@ -5,7 +5,7 @@ import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import OGImageContainer from "../components/OGImageContainer.astro";
 import { FontPath } from "../consts";
 
-export const GET: APIRoute = async (context: APIContext) => {
+export const GET: APIRoute = async (context: APIContext): Promise<Response> => {
 
     // Get the last time the code::stats data was checked
     const { lastCodeStatsCheck } = await getSiteData();

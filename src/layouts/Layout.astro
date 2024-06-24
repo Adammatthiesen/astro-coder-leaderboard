@@ -24,7 +24,6 @@ const { title, description = title } = Astro.props;
 		<link rel="canonical" href={canonical} />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/svg+xml" href={canonical+"favicon.svg"} />
-
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonical} />
 		<meta property="og:title" content={title} />
@@ -34,13 +33,11 @@ const { title, description = title } = Astro.props;
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:image:width" content="1920" />
 		<meta property="og:image:height" content="1080" />
-
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={canonical} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={canonical+"og.png"} />
-		
 		<ThemeManager />
 		<ShoelaceHeader />
 	</head>

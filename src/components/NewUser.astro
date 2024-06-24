@@ -42,7 +42,10 @@ import { Button, Dialog } from "astrolace:components";
 </Dialog>
 
 <div>
-    <Button variant="primary" size="small" class:list={"open-new-user-dialog"}>New User</Button>
+    <Button variant="primary" size="small" class:list={"open-new-user-dialog"}>
+        <Icon slot="prefix" name="person-add" />
+        New User
+    </Button>
 </div>
 
 <div class="alert-toast">

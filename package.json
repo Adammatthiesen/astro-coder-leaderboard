@@ -18,6 +18,7 @@
     "@iconify-json/skill-icons": "^1.1.8",
     "@matthiesenxyz/astrolace": "^0.1.2",
     "@matthiesenxyz/unocss-preset-daisyui": "^0.1.0",
+    "@noble/hashes": "^1.4.0",
     "@resvg/resvg-js": "^2.6.2",
     "@unocss/astro": "^0.61.0",
     "@unocss/reset": "^0.61.0",

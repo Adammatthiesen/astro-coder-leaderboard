@@ -2,6 +2,7 @@
 import UpdateCacheButton from "./UpdateCacheButton.astro";
 import { Divider, RelativeTime } from "astrolace:components";
 import NewUser from "./NewUser.astro";
+import LiveFeedBtn from "./LiveFeedBtn.astro";
 
 interface Props {
     lastCodeStatsCheck: Date;
@@ -18,7 +19,7 @@ const { lastCodeStatsCheck } = Astro.props;
         Last Updated: <RelativeTime date={lastCodeStatsCheck.toISOString()} sync />
     </div>
     <div class="screen-title-buttons">
-        <UpdateCacheButton /> <NewUser />
+        <UpdateCacheButton /> <LiveFeedBtn /><NewUser />
     </div>
     <Divider class:list={"divider"}/>
 </div>

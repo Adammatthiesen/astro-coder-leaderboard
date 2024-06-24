@@ -1,5 +1,5 @@
 ---
-import { GravatarDefaultImage } from '../consts';
+import { GravatarDefaultImage, LocalDateStringOptions } from '../consts';
 import type { ReturnCodeStatsUserList } from '../types';
 import { XPCalculator } from '../utils';
 
@@ -23,14 +23,7 @@ const { codeStatsDataCache, lastCodeStatsCheck } = Astro.props;
         </h1>
         <span style="color: #737373; font-size: 1.25rem; line-height: 1.75rem; padding-bottom: 0;">
             Last updated: { 
-                lastCodeStatsCheck.toLocaleDateString("en-US", { 
-                    minute: "numeric", 
-                    hour: "numeric", 
-                    day: "numeric", 
-                    month: "long", 
-                    year: "numeric", 
-                    timeZone: "UTC" 
-                    })} 
+                lastCodeStatsCheck.toLocaleDateString("en-US", LocalDateStringOptions)} 
             UTC
         </span>
     </div>

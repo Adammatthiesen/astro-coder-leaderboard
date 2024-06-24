@@ -26,6 +26,9 @@ dependencies:
   '@matthiesenxyz/unocss-preset-daisyui':
     specifier: ^0.1.0
     version: 0.1.0(daisyui@4.12.2)(unocss@0.61.0)
+  '@noble/hashes':
+    specifier: ^1.4.0
+    version: 1.4.0
   '@resvg/resvg-js':
     specifier: ^2.6.2
     version: 2.6.2
@@ -1186,6 +1189,11 @@ packages:
 
   /@neon-rs/load@0.0.4:
     resolution: {integrity: sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw==}
+    dev: false
+
+  /@noble/hashes@1.4.0:
+    resolution: {integrity: sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==}
+    engines: {node: '>= 16'}
     dev: false
 
   /@nodelib/fs.scandir@2.1.5:

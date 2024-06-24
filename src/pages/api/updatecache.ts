@@ -1,7 +1,7 @@
-import type { APIContext } from "astro";
+import type { APIContext, APIRoute } from "astro";
 import { getUserList, returnCodeStatsUserList, updateCodeStatsDataEntry, updateSiteData } from "../../utils";
 
-export async function POST(context: APIContext) {
+export const POST: APIRoute = async (context: APIContext): Promise<Response> => {
 
     // Get current UserList
     const userList = await getUserList();

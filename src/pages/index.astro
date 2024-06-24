@@ -8,8 +8,10 @@ import { Description, Title } from '../consts';
 // Get the last time the code::stats data was checked
 const { lastCodeStatsCheck } = await getSiteData();
 
+let currentDate = new Date();
+
 // Get the code::stats data from the cache or fetch new data if the cache is stale
-const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck,new Date());
+const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck,currentDate);
 ---
 
 <Layout title={Title} description={Description}>
@@ -19,7 +21,7 @@ const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck,new Da
 
 		<HeaderCard />
 
-		<Divider class:list={"divider"}/>
+		<Divider class:list={"divider"} />
 
 		<UserCard {codeStatsDataCache} />
 

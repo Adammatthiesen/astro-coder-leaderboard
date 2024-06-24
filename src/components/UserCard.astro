@@ -4,6 +4,7 @@ import type { ReturnCodeStatsUserList } from '../types';
 import TopLanguages from './TopLanguages.astro';
 import LevelAndProgress from './LevelAndProgress.astro';
 import UserRank from './UserRank.astro';
+import { CodeStatsProfileURL, GravatarDefaultImage } from '../consts';
 
 interface Props {
     codeStatsDataCache: ReturnCodeStatsUserList[];
@@ -30,7 +31,7 @@ const { codeStatsDataCache } = Astro.props;
         <Card class="sl-card">
             <div class="card-content">
 
-                <Avatar image={ gravatarURL || "" } label={ displayName + "'s Gravatar Image" } />
+                <Avatar image={ gravatarURL || GravatarDefaultImage } label={ displayName + "'s Gravatar Image" } />
 
                 <div class="name">
                     { displayName }
@@ -55,7 +56,7 @@ const { codeStatsDataCache } = Astro.props;
                 <profilelink>
                     <Tooltip>
                         <i slot="content">View <b>{displayName}</b>'s Code::Stats Profile</i>
-                        <a href={`https://codestats.net/users/${codestatsUsername}`} target="_blank" rel="noopener noreferrer">
+                        <a href={CodeStatsProfileURL+codestatsUsername} target="_blank" rel="noopener noreferrer">
                             <div class="text-primary i-mdi:person-arrow-right w-32px h-32px">Profile</div>
                         </a>
                     </Tooltip>

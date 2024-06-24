@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { TitleElement, HeaderCard, UserCard } from '../components/index-components';
 import { getCodeStatsDataCache, getSiteData } from '../utils';
 import { Divider } from 'astrolace:components';
+import { Description, Title } from '../consts';
 
 // Get the last time the code::stats data was checked
 const { lastCodeStatsCheck } = await getSiteData();
@@ -11,10 +12,7 @@ const { lastCodeStatsCheck } = await getSiteData();
 const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck,new Date());
 ---
 
-<Layout 
-	title="Astro Community Code::Stats Leaderboard" 
-	description='A Community Leaderboard for the Astro Community that uses code::stats data to rank members of the community based on how much they code! (This is 100% for fun!)'
-	>
+<Layout title={Title} description={Description}>
 	<main>
 		
 		<TitleElement {lastCodeStatsCheck} /> 

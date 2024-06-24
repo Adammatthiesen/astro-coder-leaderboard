@@ -2,10 +2,10 @@ import { db, UserList, SiteData } from "astro:db";
 
 export default async function() {
     await db.insert(UserList).values([
-        { displayName: "Adam Matthiesen", codestatsUsername: "adamm2047", gravatarEmail: "adam@matthiesen.xyz" },
-        { displayName: "Bryceguy", codestatsUsername: "Bryce", gravatarEmail: "brycetrussell@gmail.com" },
-        { displayName: "Jumper", codestatsUsername: "Jumper" },
-        { displayName: "Dreyfus", codestatsUsername: "dreyfus" }
+        { id: 1, displayName: "Adam Matthiesen", codestatsUsername: "adamm2047", gravatarEmail: "adam@matthiesen.xyz" },
+        { id: 2, displayName: "Bryceguy", codestatsUsername: "Bryce", gravatarEmail: "brycetrussell@gmail.com" },
+        { id: 3, displayName: "Jumper", codestatsUsername: "Jumper" },
+        { id: 4, displayName: "Dreyfus", codestatsUsername: "dreyfus" }
     ]);
 
     await db.insert(SiteData).values([

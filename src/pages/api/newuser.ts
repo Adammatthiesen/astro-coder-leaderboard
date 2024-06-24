@@ -13,6 +13,10 @@ export async function POST(context: APIContext): Promise<Response> {
         return new Response("Passwords do not match", { status: 400, statusText: "Bad Request" });
     }
 
+    if(typeof password !== "string" || password.length < 6 || password.length > 255) {
+        return new Response("Password must be between 6 and 255 characters", { status: 400, statusText: "Bad Request" });
+    }
+
     const currentUsers = await getUserList();
 
     if (currentUsers.find((user) => user.codestatsUsername === codestatsUsername)) {

@@ -13,7 +13,7 @@ const { lastCodeStatsCheck } = Astro.props;
 ---
 <div class="screen-title-holder">
     <h1 class="screen-title">
-        Astro Community <Code code={`Code::Stats`} inline={true} /> Leaderboard 
+        Astro Community <span class="text-accent">Code::Stats</span> Leaderboard 
     </h1>
     <div class="last-check">
         Last Updated: <RelativeTime date={lastCodeStatsCheck.toISOString()} sync />

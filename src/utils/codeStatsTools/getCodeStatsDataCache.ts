@@ -1,8 +1,4 @@
-import { 
-    getCodeStatsData, getUserList, 
-    isNewDateMoreThan24HoursLater, returnCodeStatsUserList, 
-    createCodeStatsDataCache, updateCodeStatsDataEntry, 
-    updateSiteData } from "../index";
+import { dbTools, isNewDateMoreThan24HoursLater, returnCodeStatsUserList } from "../index";
 import type { ReturnCodeStatsUserList } from "../../types";
 
 export async function getCodeStatsDataCache( 
@@ -11,23 +7,24 @@ export async function getCodeStatsDataCache(
 ): Promise<ReturnCodeStatsUserList[]> {
 
     // Get current stored Cache
-    const codeStatsDataCache = await getCodeStatsData();
+    const codeStatsDataCache = await (await dbTools().CodeStatsDataCache()).get();
 
     // Get the user list
-    const dbUserList = await getUserList();
+    const dbUserList = await (await dbTools().UserList()).get();
 
     if (codeStatsDataCache.length === 0) {
         // If the CodeStatsDataCache is empty, Update the CodeStatsDataCache
         const newCodeStatsData = await returnCodeStatsUserList(dbUserList)
     
         // Update the CodeStatsDataCache
-        await createCodeStatsDataCache(newCodeStatsData)
+        // await createCodeStatsDataCache(newCodeStatsData)
+        await (await dbTools().CodeStatsDataCache()).create(newCodeStatsData)
     
         // Update the lastCodeStatsCheck
-        await updateSiteData(currentDate)
+        await (await dbTools().SiteData()).update(currentDate)
 
         // Get the new CodeStatsDataCache
-        const NEW_codeStatsDataCache = await getCodeStatsData();
+        const NEW_codeStatsDataCache = await (await dbTools().CodeStatsDataCache()).get();
 
         // Return the new CodeStatsDataCache
         return NEW_codeStatsDataCache.sort((a, b) => b.totalXP - a.totalXP)
@@ -41,13 +38,13 @@ export async function getCodeStatsDataCache(
         const newCodeStatsData = await returnCodeStatsUserList(dbUserList)
 
         // Update the CodeStatsDataCache
-        await updateCodeStatsDataEntry(newCodeStatsData)
+        await (await dbTools().CodeStatsDataCache()).create(newCodeStatsData)
 
         // Update the lastCodeStatsCheck
-        await updateSiteData(currentDate)
+        await (await dbTools().SiteData()).update(currentDate)
 
         // Get the new CodeStatsDataCache
-        const NEW_codeStatsDataCache = await getCodeStatsData();
+        const NEW_codeStatsDataCache = await (await dbTools().CodeStatsDataCache()).get();
 
         // Return the new CodeStatsDataCache
         return NEW_codeStatsDataCache.sort((a, b) => b.totalXP - a.totalXP)

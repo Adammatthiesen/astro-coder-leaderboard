@@ -1,5 +1,5 @@
 import type { APIContext, APIRoute } from "astro";
-import { getCodeStatsDataCache, getSiteData, satoriAstroOG } from "../utils";
+import { dbTools, getCodeStatsDataCache, satoriAstroOG } from "../utils";
 import { html } from "satori-html";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import OGImageContainer from "../components/OGImageContainer.astro";
@@ -8,7 +8,7 @@ import { FontPath } from "../consts";
 export const GET: APIRoute = async (context: APIContext): Promise<Response> => {
 
     // Get the last time the code::stats data was checked
-    const { lastCodeStatsCheck } = await getSiteData();
+    const { lastCodeStatsCheck } = await (await dbTools().SiteData()).get();
 
     // Get the code::stats data from the cache or fetch new data if the cache is stale
     const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck,new Date());

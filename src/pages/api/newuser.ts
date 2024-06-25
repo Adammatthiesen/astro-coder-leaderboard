@@ -1,5 +1,5 @@
 import type { APIContext, APIRoute } from "astro";
-import { addNewUser, getUserList, returnCodeStatsUserList, updateCodeStatsDataEntry, updateSiteData } from "../../utils";
+import { dbTools, returnCodeStatsUserList } from "../../utils";
 import { scryptAsync } from "@noble/hashes/scrypt";
 import { ScryptOptions } from "../../consts";
 
@@ -32,7 +32,7 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
     }
 
     // Get the current user list
-    const currentUsers = await getUserList();
+    const currentUsers = await (await dbTools().UserList()).get();
 
     // Check if the user already exists
     if (currentUsers.find((user) => user.codestatsUsername === codestatsUsername || user.displayName === displayName)) {
@@ -54,21 +54,21 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
 
     // Add the user to the database
     try {
-        await addNewUser({
-            codestatsUsername, 
-            displayName, 
+        await (await dbTools().UserList()).addNewUser({
+            codestatsUsername,
+            displayName,
             gravatarEmail,
             password
-        });
+        })
 
         // Get new UserList
-        const userList = await getUserList();
+        const userList = await (await dbTools().UserList()).get();
     
         // Get the new CodeStatsData
         const newCodeStatsData = await returnCodeStatsUserList(userList);
     
         // Update the CodeStatsDataCache
-        await updateCodeStatsDataEntry(newCodeStatsData).catch((error) => {
+        await (await dbTools().CodeStatsDataCache()).update(newCodeStatsData).catch((error) => {
             return new Response(`Error: ${error}`, { 
                 status: 500, 
                 headers: { "Content-Type": "text/plain" }, 
@@ -77,7 +77,7 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
         });
     
         // Update the lastCodeStatsCheck
-        await updateSiteData(new Date());
+        await (await dbTools().SiteData()).update(new Date());
 
         return context.redirect("/");
     } catch (error) {

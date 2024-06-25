@@ -1,17 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { TitleElement, HeaderCard, UserCard } from '../components/index-components';
-import { getCodeStatsDataCache, getSiteData } from '../utils';
-import { Divider } from 'astrolace:components';
+import { dbTools, getCodeStatsDataCache } from '../utils';
 import { Description, Title } from '../consts';
 
 // Get the last time the code::stats data was checked
-const { lastCodeStatsCheck } = await getSiteData();
+const { lastCodeStatsCheck } = await (await dbTools().SiteData()).get();
 
 let currentDate = new Date();
 
 // Get the code::stats data from the cache or fetch new data if the cache is stale
-const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck,currentDate);
+const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck, currentDate);
 ---
 
 <Layout title={Title} description={Description}>
@@ -21,7 +20,7 @@ const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck,curren
 
 		<HeaderCard />
 
-		<Divider class:list={"divider"} />
+		<div class="divider"></div>
 
 		<UserCard {codeStatsDataCache} />
 

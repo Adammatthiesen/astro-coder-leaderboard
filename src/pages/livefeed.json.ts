@@ -1,11 +1,11 @@
 import type { APIContext, APIRoute } from "astro";
 import { Description, LocalDateStringOptions, Title } from "../consts";
-import { XPCalculator, getCodeStatsDataCache, getSiteData } from "../utils";
+import { XPCalculator, dbTools, getCodeStatsDataCache } from "../utils";
 import type { liveFeedJsonResponse } from "../types";
 
 export const GET: APIRoute = async (context: APIContext): Promise<Response> => {
 
-    const { lastCodeStatsCheck } = await getSiteData();
+    const { lastCodeStatsCheck } = await (await dbTools().SiteData()).get();
 
     const jsonResponse: liveFeedJsonResponse = {
         SiteURL: context.site.href,

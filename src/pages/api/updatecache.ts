@@ -10,10 +10,7 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
     const newCodeStatsData = await returnCodeStatsUserList(userList);
 
     // Update the CodeStatsDataCache
-    await dbTools().CodeStatsDataCache().update(newCodeStatsData);
-
-    // Update the lastCodeStatsCheck
-    await dbTools().SiteData().update(new Date());
+    await dbTools().CodeStatsDataCache().update(newCodeStatsData, new Date());
 
     // Redirect to the home page (or refresh the page if already on the home page)
     return context.redirect("/")

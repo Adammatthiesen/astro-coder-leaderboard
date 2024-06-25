@@ -68,16 +68,13 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
         const newCodeStatsData = await returnCodeStatsUserList(userList);
     
         // Update the CodeStatsDataCache
-        await (await dbTools().CodeStatsDataCache()).update(newCodeStatsData).catch((error) => {
+        await dbTools().CodeStatsDataCache().update(newCodeStatsData, new Date()).catch((error) => {
             return new Response(`Error: ${error}`, { 
                 status: 500, 
                 headers: { "Content-Type": "text/plain" }, 
                 statusText: "Error"
             });
         });
-    
-        // Update the lastCodeStatsCheck
-        await dbTools().SiteData().update(new Date());
 
         return context.redirect("/");
     } catch (error) {

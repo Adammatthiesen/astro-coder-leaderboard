@@ -50,8 +50,10 @@ export const dbTools = () => {
                  * @param newCodeStatsData The data to be inserted into the CodeStatsDataCache table
                  */
                 async create(
-                    newCodeStatsData: codeStatsDataEntry[]
+                    newCodeStatsData: codeStatsDataEntry[],
+                    currentDate: Date,
                 ) {
+                    await dbTools().SiteData().update(currentDate);
                     return await db.insert(CodeStatsDataCache)
                             .values(newCodeStatsData)
                             .returning()
@@ -61,11 +63,12 @@ export const dbTools = () => {
                  * @param newCodeStatsData The data to be inserted into the CodeStatsDataCache table
                  */
                 async update(
-                    newCodeStatsData: codeStatsDataEntry[]
+                    newCodeStatsData: codeStatsDataEntry[],
+                    currentDate: Date,
                 ) {
                     await db.delete(CodeStatsDataCache)
                             .then(()=>{
-                                return this.create(newCodeStatsData)
+                                return this.create(newCodeStatsData, currentDate)
                             })
                             .catch((err) => {
                                 return new AstroError(err, "Error updating CodeStatsDataCache")

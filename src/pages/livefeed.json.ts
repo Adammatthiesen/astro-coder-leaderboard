@@ -21,14 +21,19 @@ export const GET: APIRoute = async (context: APIContext): Promise<Response> => {
         jsonResponse.UserList.push({
             DisplayName: user.displayName,
             CodeStatsUsername: user.codestatsUsername,
+            CodeStatsFirstCode: user.codeStatsJoinDate||undefined,
             Level: XPCalculator.getLevel(user.totalXP),
             TotalXP: user.totalXP,
             TopMachine: user.topMachine||null,
-            TopLanages: user.topLanguages||null
+            TopLanages: user.topLanguages||null,
         })
     }
 
-    return new Response(JSON.stringify({...jsonResponse}), {
-        headers: { "content-type": "application/json" },
-    });
+    return new Response(
+        JSON.stringify(jsonResponse, null, 2), 
+            {
+                headers: { "content-type": "application/json" },
+                status: 200
+            }
+        );
 }

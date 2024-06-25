@@ -23,8 +23,8 @@ const { codeStatsDataCache, lastCodeStatsCheck } = Astro.props;
         </h1>
         <span style="color: #737373; font-size: 1.25rem; line-height: 1.75rem; padding-bottom: 0;">
             Last updated: { 
-                lastCodeStatsCheck.toLocaleDateString("en-US", LocalDateStringOptions)} 
-            UTC
+                lastCodeStatsCheck.toLocaleDateString("en-US", LocalDateStringOptions)
+            } UTC
         </span>
     </div>
 
@@ -59,23 +59,20 @@ const { codeStatsDataCache, lastCodeStatsCheck } = Astro.props;
 
                         <div style="display: flex; flex-direction: column; justify-items: center; align-items: center; padding-top: 0;">
                             <span style="color: #00a8e0; font-size: 1.25rem; line-height: 1.75rem;">
-                                { // @ts-ignore
+                                {
                                     topLanguages.first ? (
-                                        // @ts-ignore
                                         "#1 " + topLanguages.first.name + " (Level: " + XPCalculator.getLevel(topLanguages.first.xps) + ")"
                                     ) : "No Data" }
                             </span>
                             <span style="color: #00a8e0; font-size: 1.25rem; line-height: 1.75rem;">
-                                { // @ts-ignore
+                                { 
                                     topLanguages.second && (
-                                        // @ts-ignore
                                         "#2 " + topLanguages.second.name + " (Level: " + XPCalculator.getLevel(topLanguages.second.xps) + ")"
                                     ) }
                             </span>
                             <span style="color: #00a8e0; font-size: 1.25rem; line-height: 1.75rem;">
-                                { // @ts-ignore
+                                {
                                     topLanguages.third && (
-                                        // @ts-ignore 
                                         "#3 " + topLanguages.third.name + " (Level: " + XPCalculator.getLevel(topLanguages.third.xps) + ")"
                                     ) }
                             </span>
@@ -123,23 +120,20 @@ const { codeStatsDataCache, lastCodeStatsCheck } = Astro.props;
 
                         <div style="display: flex; flex-direction: column; justify-items: center; align-items: center; padding-top: 0;">
                             <span style="color: #00a8e0; font-size: 1.25rem; line-height: 1.75rem;">
-                                { // @ts-ignore
+                                {
                                     topLanguages.first ? (
-                                        // @ts-ignore
                                         "#1 " + topLanguages.first.name + " (Level: " + XPCalculator.getLevel(topLanguages.first.xps) + ")"
                                     ) : "No Data" }
                             </span>
                             <span style="color: #00a8e0; font-size: 1.25rem; line-height: 1.75rem;">
-                                { // @ts-ignore
+                                {
                                     topLanguages.second && (
-                                        // @ts-ignore
                                         "#2 " + topLanguages.second.name + " (Level: " + XPCalculator.getLevel(topLanguages.second.xps) + ")"
                                     ) }
                             </span>
                             <span style="color: #00a8e0; font-size: 1.25rem; line-height: 1.75rem;">
-                                { // @ts-ignore
+                                { 
                                     topLanguages.third && (
-                                        // @ts-ignore 
                                         "#3 " + topLanguages.third.name + " (Level: " + XPCalculator.getLevel(topLanguages.third.xps) + ")"
                                     ) }
                             </span>

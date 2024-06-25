@@ -19,6 +19,7 @@ const CodeStatsDataCache = defineTable({
         totalXP: column.number({ optional: true }),
         topMachine: column.text({ optional: true }),
         topLanguages: column.json({ optional: true }),
+        codeStatsJoinDate: column.text({ optional: true }),
     }
 });
 

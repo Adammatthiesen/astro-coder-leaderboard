@@ -7,6 +7,14 @@ export const returnCodeStatsUserList = async (userList: UserListType) => {
     for (const user of userList) {
         const codeStats = await getCodeStats(user.codestatsUsername);
 
+        const DateList = Object.keys(codeStats.dates);
+
+        const datesSortedFromOldestToNewest = DateList.sort((a, b) => {
+            return new Date(a).getTime() - new Date(b).getTime();
+        });
+
+        const FirstProgrammingDate = datesSortedFromOldestToNewest[0];
+
         let topMachine: ReturnCodeStatsUserList["topMachine"] = null;
         let topLanguages: ReturnCodeStatsUserList["topLanguages"] = {};
 
@@ -86,10 +94,11 @@ export const returnCodeStatsUserList = async (userList: UserListType) => {
             id: user.id,
             displayName: user.displayName,
             codestatsUsername: user.codestatsUsername,
+            codeStatsJoinDate: FirstProgrammingDate,
             gravatarURL,
             totalXP,
             topMachine,
-            topLanguages
+            topLanguages,
         });
     }
 

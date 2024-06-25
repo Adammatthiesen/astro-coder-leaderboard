@@ -8,26 +8,26 @@ type Props = {
 
 const { topLanguages } = Astro.props;
 ---
-{ // @ts-expect-error: topLanguages is an unknown `Object` Type
+{
     topLanguages.first && (
-    <div languages>
-        1. { // @ts-expect-error: topLanguages is an unknown `Object` Type 
+    <div class="languages">
+        1. {
             topLanguages.first.name + " (Level: " + XPCalculator.getLevel(topLanguages.first.xps) + ")"
         }
     </div>
 )}
-{ // @ts-expect-error: topLanguages is an unknown `Object` Type
+{
     topLanguages.second && (
-    <div languages>
-        2. { // @ts-expect-error: topLanguages is an unknown `Object` Type
+    <div class="languages">
+        2. { 
             topLanguages.second.name + " (Level: " + XPCalculator.getLevel(topLanguages.second.xps) + ")" 
         }
     </div>
 )}
-{ // @ts-expect-error: topLanguages is an unknown `Object` Type
+{
     topLanguages.third && (
-    <div languages>
-        3. { // @ts-expect-error: topLanguages is an unknown `Object` Type
+    <div class="languages">
+        3. { 
             topLanguages.third.name + " (Level: " + XPCalculator.getLevel(topLanguages.third.xps) + ")" 
         }
     </div>

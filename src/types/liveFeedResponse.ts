@@ -7,6 +7,7 @@ export type liveFeedJsonResponse = {
     UserList: Array<{
         DisplayName: string;
         CodeStatsUsername: string;
+        CodeStatsFirstCode: string|undefined;
         Level: number;
         TotalXP: number;
         TopMachine: string|null;

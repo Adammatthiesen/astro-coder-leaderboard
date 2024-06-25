@@ -20,4 +20,5 @@ export type codeStatsDataEntry = {
     totalXP: number;
     topMachine: string;
     topLanguages: unknown;
+    codeStatsJoinDate: string|undefined;
 }

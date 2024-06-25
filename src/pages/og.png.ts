@@ -25,7 +25,7 @@ export const GET: APIRoute = async (context: APIContext): Promise<Response> => {
         .replace(/<\/html>/, '')
         .trim();
 
-    const fontFile = await fetch(context.url.origin+FontPath)
+    const fontFile = await fetch(new URL(FontPath,context.url.origin))
     const fontData = await fontFile.arrayBuffer();
 
     return await satoriAstroOG({

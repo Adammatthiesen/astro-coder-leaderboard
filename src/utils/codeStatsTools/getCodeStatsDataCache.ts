@@ -17,11 +17,8 @@ export async function getCodeStatsDataCache(
         const newCodeStatsData = await returnCodeStatsUserList(dbUserList)
     
         // Update the CodeStatsDataCache
-        await dbTools().CodeStatsDataCache().create(newCodeStatsData)
+        await dbTools().CodeStatsDataCache().create(newCodeStatsData, currentDate)
     
-        // Update the lastCodeStatsCheck
-        await dbTools().SiteData().update(currentDate)
-
         // Get the new CodeStatsDataCache
         const NEW_codeStatsDataCache = await dbTools().CodeStatsDataCache().get();
 
@@ -37,10 +34,7 @@ export async function getCodeStatsDataCache(
         const newCodeStatsData = await returnCodeStatsUserList(dbUserList)
 
         // Update the CodeStatsDataCache
-        await dbTools().CodeStatsDataCache().create(newCodeStatsData)
-
-        // Update the lastCodeStatsCheck
-        await dbTools().SiteData().update(currentDate)
+        await dbTools().CodeStatsDataCache().create(newCodeStatsData, currentDate)
 
         // Get the new CodeStatsDataCache
         const NEW_codeStatsDataCache = await dbTools().CodeStatsDataCache().get();

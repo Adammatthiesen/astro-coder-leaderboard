@@ -15,8 +15,8 @@ const { codeStatsDataCache } = Astro.props;
 {
     codeStatsDataCache.length === 0 && (
         <Card class="sl-card">
-            <div class="card-content">
-                <div class="no-user-data">
+            <div card-content>
+                <div no-user-data>
                     No User Data Found.
                 </div>
             </div>
@@ -29,27 +29,27 @@ const { codeStatsDataCache } = Astro.props;
         { displayName, gravatarURL, totalXP, topMachine, topLanguages, codestatsUsername }, index
     ) => (
         <Card class="sl-card">
-            <div class="card-content">
+            <div card-content>
 
-                <Avatar image={ gravatarURL || GravatarDefaultImage } label={ displayName + "'s Gravatar Image" } />
+                <Avatar class:list={"sl-avatar"} image={ gravatarURL || GravatarDefaultImage } label={ displayName + "'s Gravatar Image" } />
 
-                <div class="name">
+                <div card-content-div name>
                     { displayName }
                 </div>
 
-                <div>
+                <div card-content-div>
                     <TopLanguages {topLanguages} />
                 </div>
 
-                <div class="machine">
+                <div card-content-div machine>
                     { topMachine }
                 </div>
 
-                <div class="level">
+                <div card-content-div level>
                     <LevelAndProgress {totalXP} />
                 </div>
 
-                <div class="rank">
+                <div card-content-div class="rank">
                     <UserRank {index} />
                 </div>
 
@@ -66,3 +66,9 @@ const { codeStatsDataCache } = Astro.props;
         </Card>
     ))
 }
+
+<style scoped>
+    sl-avatar {
+        --size: 5rem;
+    }
+    </style>

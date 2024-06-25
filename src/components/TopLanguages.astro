@@ -10,7 +10,7 @@ const { topLanguages } = Astro.props;
 ---
 { // @ts-expect-error: topLanguages is an unknown `Object` Type
     topLanguages.first && (
-    <div class="languages">
+    <div languages>
         1. { // @ts-expect-error: topLanguages is an unknown `Object` Type 
             topLanguages.first.name + " (Level: " + XPCalculator.getLevel(topLanguages.first.xps) + ")"
         }
@@ -18,7 +18,7 @@ const { topLanguages } = Astro.props;
 )}
 { // @ts-expect-error: topLanguages is an unknown `Object` Type
     topLanguages.second && (
-    <div class="languages">
+    <div languages>
         2. { // @ts-expect-error: topLanguages is an unknown `Object` Type
             topLanguages.second.name + " (Level: " + XPCalculator.getLevel(topLanguages.second.xps) + ")" 
         }
@@ -26,7 +26,7 @@ const { topLanguages } = Astro.props;
 )}
 { // @ts-expect-error: topLanguages is an unknown `Object` Type
     topLanguages.third && (
-    <div class="languages">
+    <div languages>
         3. { // @ts-expect-error: topLanguages is an unknown `Object` Type
             topLanguages.third.name + " (Level: " + XPCalculator.getLevel(topLanguages.third.xps) + ")" 
         }

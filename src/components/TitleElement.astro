@@ -11,16 +11,17 @@ interface Props {
 const { lastCodeStatsCheck } = Astro.props;
 
 ---
-<div class="screen-title-holder">
-    <h1 class="screen-title">
-        Astro Community <span class="text-accent">Code::Stats</span> Leaderboard 
+<div screen-title-holder>
+    <h1 screen-title>
+        Astro Community <span text-accent>Code::Stats</span> Leaderboard 
     </h1>
-    <div class="last-check">
-        Last Updated: <RelativeTime date={lastCodeStatsCheck.toISOString()} sync />
+    <div code-check>
+        Last Updated: <RelativeTime class:list={"sl-relative-time"} date={lastCodeStatsCheck.toISOString()} sync />
     </div>
-    <div class="screen-title-buttons">
+    <div screen-title-buttons>
         <UpdateCacheButton /> 
         <LiveFeedBtn /> 
+        <div class="divider divider-horizontal menu-divider"></div>
         <NewUser />
     </div>
     <div class="divider"></div>

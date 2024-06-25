@@ -3,12 +3,18 @@ import { Avatar, Card } from "astrolace:components";
 
 ---
 <Card class="sl-card-header">
-    <div class="card-content">
-        <Avatar image="" initials="EX" label="Example Avatar for Leaderboard"/>
-        <div class="name header">Display Name</div>
-        <div class="languages header">Top Languages</div>
-        <div class="machine header">Top Machine</div>
-        <div class="level header">Level (Total XP)</div>
-        <div class="rank header">Rank</div>
+    <div card-content>
+        <Avatar class:list={"sl-avatar"} image="" initials="EX" label="Example Avatar for Leaderboard"/>
+        <div name header>Display Name</div>
+        <div languages header>Top Languages</div>
+        <div machine header>Top Machine</div>
+        <div level header>Level (Total XP)</div>
+        <div rank header>Rank</div>
     </div>
 </Card>
+
+<style scoped>
+sl-avatar {
+	--size: 5rem;
+}
+</style>

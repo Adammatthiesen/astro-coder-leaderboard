@@ -14,15 +14,75 @@ const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck, curre
 ---
 
 <Layout title={Title} description={Description}>
-	<main>
+	<main class="main">
 		
 		<TitleElement {lastCodeStatsCheck} /> 
 
 		<HeaderCard />
 
-		<div class="divider"></div>
+		<divider class="divider" />
 
 		<UserCard {codeStatsDataCache} />
 
 	</main>
 </Layout>
+
+<style is:global>
+
+@media screen and (max-width: 1024px) {
+	.rank .ranklabel {
+		--uno-apply: "text-lg shrink px-0";
+	}
+	.rank .rankvalue {
+		--uno-apply: "shrink px-0";
+	}
+	.rank .levelnumber {
+		--uno-apply: "text-lg shrink px-0";
+	}
+	.rank .levelprogress {
+		--uno-apply: "shrink px-0";
+	}
+	.rank {
+		--uno-apply: "text-lg flex flex-row justify-center content-center items-center px-0 gap-2 w-fit";
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.ranklabel {
+		--uno-apply: "hidden";
+	}
+	.menu-divider {
+		display: inherit;
+		position: relative;
+		padding: 0;
+		margin: 0;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.menu-divider {
+		display: none;
+	}
+}
+
+profilelink {
+	position: absolute;
+	right: 2rem;
+	top: 50%;
+	vertical-align: middle;
+} 
+profilelink sl-tooltip, 
+profilelink sl-tooltip a {
+	vertical-align: middle;
+}
+
+.progressbar {
+	--height: 24px;
+}
+
+.progressbar::part(label) {
+	font-weight: bolder;
+	font-size: 1rem;
+	text-align: center;
+}
+</style>

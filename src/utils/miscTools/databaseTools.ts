@@ -8,7 +8,7 @@ export const dbTools = () => {
         /**
          * This function returns an object with functions that can be used to interact with the SiteData table
          */
-        async SiteData() {
+        SiteData() {
             return {
                 /**
                  * This function gets the data from the SiteData table
@@ -37,7 +37,7 @@ export const dbTools = () => {
         /**
          * This function returns an object with functions that can be used to interact with the CodeStatsDataCache table
          */
-        async CodeStatsDataCache() {
+        CodeStatsDataCache() {
             return {
                 /**
                  * This function gets the data from the CodeStatsDataCache table
@@ -76,7 +76,7 @@ export const dbTools = () => {
         /**
          * This function returns an object with functions that can be used to interact with the UserList table
          */
-        async UserList() {
+        UserList() {
             return {
                 /**
                  * This function gets the data from the UserList table

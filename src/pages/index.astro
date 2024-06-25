@@ -5,7 +5,7 @@ import { dbTools, getCodeStatsDataCache } from '../utils';
 import { Description, Title } from '../consts';
 
 // Get the last time the code::stats data was checked
-const { lastCodeStatsCheck } = await (await dbTools().SiteData()).get();
+const { lastCodeStatsCheck } = await dbTools().SiteData().get();
 
 let currentDate = new Date();
 

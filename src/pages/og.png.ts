@@ -8,7 +8,7 @@ import { FontPath } from "../consts";
 export const GET: APIRoute = async (context: APIContext): Promise<Response> => {
 
     // Get the last time the code::stats data was checked
-    const { lastCodeStatsCheck } = await (await dbTools().SiteData()).get();
+    const { lastCodeStatsCheck } = await dbTools().SiteData().get();
 
     // Get the code::stats data from the cache or fetch new data if the cache is stale
     const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck,new Date());

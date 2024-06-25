@@ -32,7 +32,7 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
     }
 
     // Get the current user list
-    const currentUsers = await (await dbTools().UserList()).get();
+    const currentUsers = await dbTools().UserList().get();
 
     // Check if the user already exists
     if (currentUsers.find((user) => user.codestatsUsername === codestatsUsername || user.displayName === displayName)) {
@@ -54,7 +54,7 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
 
     // Add the user to the database
     try {
-        await (await dbTools().UserList()).addNewUser({
+        await dbTools().UserList().addNewUser({
             codestatsUsername,
             displayName,
             gravatarEmail,
@@ -62,7 +62,7 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
         })
 
         // Get new UserList
-        const userList = await (await dbTools().UserList()).get();
+        const userList = await dbTools().UserList().get();
     
         // Get the new CodeStatsData
         const newCodeStatsData = await returnCodeStatsUserList(userList);
@@ -77,7 +77,7 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
         });
     
         // Update the lastCodeStatsCheck
-        await (await dbTools().SiteData()).update(new Date());
+        await dbTools().SiteData().update(new Date());
 
         return context.redirect("/");
     } catch (error) {

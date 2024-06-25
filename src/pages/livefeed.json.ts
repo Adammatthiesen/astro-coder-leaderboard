@@ -5,7 +5,7 @@ import type { liveFeedJsonResponse } from "../types";
 
 export const GET: APIRoute = async (context: APIContext): Promise<Response> => {
 
-    const { lastCodeStatsCheck } = await (await dbTools().SiteData()).get();
+    const { lastCodeStatsCheck } = await dbTools().SiteData().get();
 
     const jsonResponse: liveFeedJsonResponse = {
         SiteURL: context.site.href,

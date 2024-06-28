@@ -1,5 +1,8 @@
-import { getCodeStats, languageFix, languageFilter, createGravatar } from "../index";
 import type { ReturnCodeStatsUserList, UserListType } from "../../types";
+import { languageFilter } from "../langTools/LanguageFilter";
+import { languageFix } from "../langTools/languageFix";
+import { createGravatar } from "../userTools/createGravatarURL";
+import { getCodeStats } from "./getCodeStats";
 
 export const returnCodeStatsUserList = async (userList: UserListType) => {
     const returnArray: ReturnCodeStatsUserList[] = [];

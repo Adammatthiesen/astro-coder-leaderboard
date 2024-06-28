@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { TitleElement, HeaderCard, UserCard } from '../components/index-components';
-import { dbTools, getCodeStatsDataCache } from '../utils';
 import { Description, Title } from '../consts';
+import { getCodeStatsDataCache } from '../utils/codeStatsTools/getCodeStatsDataCache';
+import { dbTools } from '../utils/miscTools/databaseTools';
 
 // Get the last time the code::stats data was checked
 const { lastCodeStatsCheck } = await dbTools().SiteData().get();

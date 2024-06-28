@@ -1,5 +1,7 @@
-import { dbTools, isNewDateMoreThan24HoursLater, returnCodeStatsUserList } from "../index";
 import type { ReturnCodeStatsUserList } from "../../types";
+import { dbTools } from "../miscTools/databaseTools";
+import { isNewDateMoreThan24HoursLater } from "../miscTools/isNewDateMoreThan24HoursLater";
+import { returnCodeStatsUserList } from "./returnCodeStatsUserList";
 
 export async function getCodeStatsDataCache( 
     lastCodeStatsCheck: Date,

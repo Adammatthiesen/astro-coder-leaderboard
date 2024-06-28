@@ -1,9 +1,11 @@
 import type { APIContext, APIRoute } from "astro";
-import { dbTools, getCodeStatsDataCache, satoriAstroOG } from "../utils";
 import { html } from "satori-html";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import OGImageContainer from "../components/OGImageContainer.astro";
 import { FontPath } from "../consts";
+import { dbTools } from "../utils/miscTools/databaseTools";
+import { getCodeStatsDataCache } from "../utils/codeStatsTools/getCodeStatsDataCache";
+import { satoriAstroOG } from "../utils/satori";
 
 export const GET: APIRoute = async (context: APIContext): Promise<Response> => {
 

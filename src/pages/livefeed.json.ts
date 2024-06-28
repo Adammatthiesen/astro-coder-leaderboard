@@ -1,7 +1,9 @@
 import type { APIContext, APIRoute } from "astro";
 import { Description, LocalDateStringOptions, Title } from "../consts";
-import { XPCalculator, dbTools, getCodeStatsDataCache } from "../utils";
 import type { liveFeedJsonResponse } from "../types";
+import { dbTools } from "../utils/miscTools/databaseTools";
+import { getCodeStatsDataCache } from "../utils/codeStatsTools/getCodeStatsDataCache";
+import { XPCalculator } from "../utils/codeStatsTools/xpCalculator";
 
 export const GET: APIRoute = async (context: APIContext): Promise<Response> => {
 

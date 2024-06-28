@@ -1,7 +1,8 @@
 import type { APIContext, APIRoute } from "astro";
-import { dbTools, returnCodeStatsUserList } from "../../utils";
 import { scryptAsync } from "@noble/hashes/scrypt";
 import { ScryptOptions } from "../../consts";
+import { dbTools } from "../../utils/miscTools/databaseTools";
+import { returnCodeStatsUserList } from "../../utils/codeStatsTools/returnCodeStatsUserList";
 
 export const POST: APIRoute = async (context: APIContext): Promise<Response> => {
 

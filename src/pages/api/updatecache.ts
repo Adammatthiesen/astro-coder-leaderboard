@@ -1,5 +1,6 @@
 import type { APIContext, APIRoute } from "astro";
-import { dbTools, returnCodeStatsUserList } from "../../utils";
+import { dbTools } from "../../utils/miscTools/databaseTools";
+import { returnCodeStatsUserList } from "../../utils/codeStatsTools/returnCodeStatsUserList";
 
 export const POST: APIRoute = async (context: APIContext): Promise<Response> => {
 

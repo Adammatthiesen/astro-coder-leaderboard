@@ -1,1 +1,0 @@
-export { createGravatar } from "./createGravatarURL";

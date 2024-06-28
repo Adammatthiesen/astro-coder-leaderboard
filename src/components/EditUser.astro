@@ -7,18 +7,15 @@ import { Button, Dialog } from "astrolace:components";
 
     <form id="edit-user-creation" action="/api/edituser" method="post">
 
-        <Input name="code-stats-username" label="Code::Stats Username" form="edit-user-creation" 
-            inputmode="text" type="text" required />
+        <Input name="code-stats-username" label="Code::Stats Username" form="edit-user-creation" inputmode="text" type="text" required />
 
         <Divider />
 
-        <Input name="display-name" label="Display Name" form="edit-user-creation" 
-            inputmode="text" help-text="This will change your display name!" type="text" required />
+        <Input name="display-name" label="Display Name" form="edit-user-creation" inputmode="text" help-text="This will change your display name!" type="text" required />
 
         <Divider />
 
-        <Input name="gravatar-email" label="Gravatar Email" form="edit-user-creation" inputmode="email" 
-            type="email" help-text="This will change your  Avatar image from Gravatar.com" required />
+        <Input name="gravatar-email" label="Gravatar Email" form="edit-user-creation" inputmode="email" type="email" help-text="This will change your  Avatar image from Gravatar.com" required />
 
         <Divider />
 
@@ -42,7 +39,7 @@ import { Button, Dialog } from "astrolace:components";
     </Button>
 </div>
 
-<div class="alert-toast">
+<div class="edit-alert-toast">
     <Alert variant="danger" duration={6000} closable>
         <Icon slot="icon" name="alert-circle" />
         <p id="edituser-form-error-toast"></p>
@@ -58,7 +55,7 @@ import type { SlAlert, SlButton, SlDialog } from "astrolace:types";
     const cancelDialogButton = document.getElementsByClassName('cancel-edit-user')[0] as SlButton;
     const editUserForm = document.getElementById('edit-user-creation') as HTMLFormElement;
     const newUserButton = document.getElementsByClassName('edit-user-button')[0] as SlButton;
-    const alertContainer = document.querySelector('.alert-toast') as HTMLDivElement;
+    const alertContainer = document.querySelector('.edit-alert-toast') as HTMLDivElement;
     const formErrorToast = alertContainer.querySelector('sl-alert[variant="danger"]') as SlAlert;
     const formErrorToastMessage = alertContainer.querySelector('#edit-form-error-toast') as HTMLParagraphElement;
 

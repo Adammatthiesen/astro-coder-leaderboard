@@ -3,6 +3,7 @@ import { scryptAsync } from "@noble/hashes/scrypt";
 import { ScryptOptions } from "../../consts";
 import { dbTools } from "../../utils/miscTools/databaseTools";
 import { returnCodeStatsUserList } from "../../utils/codeStatsTools/returnCodeStatsUserList";
+import { z } from "astro/zod";
 
 export const POST: APIRoute = async (context: APIContext): Promise<Response> => {
 
@@ -32,6 +33,13 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
         });
     }
 
+    if (typeof gravatarEmail !== "string" || z.coerce.string().email().safeParse(gravatarEmail).success === false) {
+        return new Response("Invalid email address", { 
+            status: 400, 
+            statusText: "Bad Request"
+        });
+    }
+
     // Get the current user list
     const currentUsers = await dbTools().UserList().get();
 
@@ -58,7 +66,7 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
         await dbTools().UserList().addNewUser({
             codestatsUsername,
             displayName,
-            gravatarEmail,
+            gravatarEmail, 
             password
         })
 

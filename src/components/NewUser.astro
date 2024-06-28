@@ -7,28 +7,23 @@ import { Button, Dialog } from "astrolace:components";
 
     <form id="new-user-creation" action="/api/newuser" method="post">
 
-        <Input name="display-name" label="Display Name" form="new-user-creation" 
-            inputmode="text" type="text" required />
+        <Input name="display-name" label="Display Name" form="new-user-creation" inputmode="text" type="text" required />
 
         <Divider />
 
-        <Input name="code-stats-username" label="Code::Stats Username" form="new-user-creation" 
-            inputmode="text" type="text" required />
+        <Input name="code-stats-username" label="Code::Stats Username" form="new-user-creation" inputmode="text" type="text" required />
 
         <Divider />
 
-        <Input name="gravatar-email" label="Gravatar Email" form="new-user-creation" inputmode="email" 
-            type="email" help-text="Used to get your Avatar image from Gravatar.com" required />
+        <Input name="gravatar-email" label="Gravatar Email" form="new-user-creation" inputmode="email" type="email" help-text="Used to get your Avatar image from Gravatar.com" required />
 
         <Divider />
 
-        <Input name="password" label="Password" form="new-user-creation" inputmode="text" type="password" 
-            help-text="This password will be required to edit your account in the future!" required />
+        <Input name="password" label="Password" form="new-user-creation" inputmode="text" type="password" help-text="This password will be required to edit your account in the future!" required />
 
         <Divider />
 
-        <Input name="password-confirm" label="Confirm Password" form="new-user-creation" inputmode="text" 
-            type="password" help-text="Please confirm your password" required />
+        <Input name="password-confirm" label="Confirm Password" form="new-user-creation" inputmode="text" type="password" help-text="Please confirm your password" required />
 
         <Divider />
 

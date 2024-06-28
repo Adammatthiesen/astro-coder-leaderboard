@@ -1,0 +1,99 @@
+---
+import { Alert, Divider, Icon, VisuallyHidden } from "astrolace:components";
+import { Input } from "astrolace:components";
+import { Button, Dialog } from "astrolace:components";
+---
+<Dialog id="edit-user-dialog" label="Edit User">
+
+    <form id="edit-user-creation" action="/api/edituser" method="post">
+
+        <Input name="code-stats-username" label="Code::Stats Username" form="edit-user-creation" 
+            inputmode="text" type="text" required />
+
+        <Divider />
+
+        <Input name="display-name" label="Display Name" form="edit-user-creation" 
+            inputmode="text" help-text="This will change your display name!" type="text" required />
+
+        <Divider />
+
+        <Input name="gravatar-email" label="Gravatar Email" form="edit-user-creation" inputmode="email" 
+            type="email" help-text="This will change your  Avatar image from Gravatar.com" required />
+
+        <Divider />
+
+        <Input name="password" label="Confirm Password" form="edit-user-creation" inputmode="text" type="password" required />
+
+        <Divider />
+
+        <Button type="submit" form="edit-user-creation" variant="primary" size="small" class:list={"edit-user-button"}>
+            Edit User
+        </Button>
+
+    </form>
+
+    <Button slot="footer" variant="danger" size="small" class:list={"cancel-edit-user"}>Cancel</Button>
+</Dialog>
+
+<div>
+    <Button variant="primary" size="small" class:list={"openedituserbtn"}>
+        <Icon slot="prefix" name="person-gear" />
+        Edit User
+    </Button>
+</div>
+
+<VisuallyHidden>
+    <div class="alert-toast">
+        <Alert variant="danger" duration={6000} closable>
+            <Icon slot="icon" name="alert-circle" />
+            <p id="edituser-form-error-toast"></p>
+        </Alert>
+    </div>
+</VisuallyHidden>
+
+
+<script>
+import type { SlAlert, SlButton, SlDialog } from "astrolace:types";
+
+    const editUserDialog = document.getElementById('edit-user-dialog') as SlDialog;
+    const openDialogButton = document.getElementsByClassName('openedituserbtn')[0] as SlButton;
+    const cancelDialogButton = document.getElementsByClassName('cancel-edit-user')[0] as SlButton;
+    const editUserForm = document.getElementById('edit-user-creation') as HTMLFormElement;
+    const newUserButton = document.getElementsByClassName('edit-user-button')[0] as SlButton;
+    const alertContainer = document.querySelector('.alert-toast') as HTMLDivElement;
+    const formErrorToast = alertContainer.querySelector('sl-alert[variant="danger"]') as SlAlert;
+    const formErrorToastMessage = alertContainer.querySelector('#edit-form-error-toast') as HTMLParagraphElement;
+
+    openDialogButton.addEventListener('click', () => {
+        editUserDialog.show();
+    });
+
+    cancelDialogButton.addEventListener('click', () => {
+        editUserDialog.hide();
+    });
+
+    editUserDialog.addEventListener('sl-request-close', event => {
+        if (event.detail.source === 'overlay') {
+            event.preventDefault();
+        }
+    });
+
+    editUserForm.addEventListener('submit', async (event) => {
+        newUserButton.loading = true;
+        event.preventDefault();
+        const formElement = event.target as HTMLFormElement;
+        const response = await fetch(formElement.action, {
+            method: formElement.method,
+            body: new FormData(formElement)
+        });
+        if (response.ok) {
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        } else {
+            newUserButton.loading = false;
+            formErrorToastMessage.innerText = `An error occurred while editing your user. Please try again later. Error: ${response.status} - ${response.body}`;
+            formErrorToast.toast();
+        }
+    });
+</script>

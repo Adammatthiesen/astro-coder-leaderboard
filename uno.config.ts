@@ -14,7 +14,7 @@ export default defineConfig({
         'main': 'flex flex-col justify-center justify-items-center max-w-[100vw] p-4 lg:p-12 bg-base-100 font-sans',
         'screen-title-holder': 'flex flex-col items-center justify-center justify-items-center',
         'screen-title': 'text-xl md:text-4xl font-bold text-primary',
-        'screen-title-buttons': 'flex flex-wrap w-full lg:flex-row lg:px-8rem pt-2 gap-4 position-relative pr-1rem pl-1rem',
+        'screen-title-buttons': 'flex flex-row flex-wrap w-full pt-2 gap-4',
         'code-check': 'text-gray-400 text-sm pt-2 font-italic',
         'sl-relative-time': 'font-bold',
         'sl-card': 'drop-shadow-2xl mb-8 w-full md:w-[80vw] lg:w-full content-center items-center justify-center self-center',
@@ -30,7 +30,6 @@ export default defineConfig({
         'header': 'text-xl font-bold flex justify-center w-full drop-shadow-xl',
         'no-user-data': 'text-primary text-4xl font-bold',
         'menu-divider': 'm-0 p-0',
-        'opennewuserbtn': 'position-relative p-0 m-0',
     },
     presets: [
         presetUno({

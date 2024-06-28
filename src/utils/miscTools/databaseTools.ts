@@ -67,12 +67,10 @@ export const dbTools = () => {
                     currentDate: Date,
                 ) {
                     await db.delete(CodeStatsDataCache)
-                            .then(()=>{
-                                return this.create(newCodeStatsData, currentDate)
-                            })
                             .catch((err) => {
                                 return new AstroError(err, "Error updating CodeStatsDataCache")
                             })
+                    return await dbTools().CodeStatsDataCache().create(newCodeStatsData, currentDate)
                 },
             }
         },

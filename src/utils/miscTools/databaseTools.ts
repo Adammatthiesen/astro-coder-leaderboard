@@ -29,8 +29,15 @@ export const dbTools = () => {
                     return await db.update(SiteData)
                             .set({id: 1, lastCodeStatsCheck: newSiteData})
                             .where(eq(SiteData.id, 1))
-                            .returning()
-                            .get();
+                            .catch(async (err) => {
+                                return await db.insert(SiteData)
+                                        .values({id: 1, lastCodeStatsCheck: newSiteData})
+                                        .returning()
+                                        .get()
+                            })
+                            .then(() => {
+                                return newSiteData
+                            })
                 }
             }
         },

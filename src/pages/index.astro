@@ -6,18 +6,20 @@ import { getCodeStatsDataCache } from '../utils/codeStatsTools/getCodeStatsDataC
 import { dbTools } from '../utils/miscTools/databaseTools';
 
 // Get the last time the code::stats data was checked
-const { lastCodeStatsCheck } = await dbTools().SiteData().get();
+const lastdate = await dbTools().SiteData().get();
+
+const lastCodeStatsFallback = lastdate?.lastCodeStatsCheck || new Date("2022-10-13");
 
 let currentDate = new Date();
 
 // Get the code::stats data from the cache or fetch new data if the cache is stale
-const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsCheck, currentDate);
+const codeStatsDataCache = await getCodeStatsDataCache(lastCodeStatsFallback, currentDate);
 ---
 
 <Layout title={Title} description={Description}>
 	<main class="main">
 		
-		<TitleElement {lastCodeStatsCheck} /> 
+		<TitleElement lastCodeStatsCheck={lastCodeStatsFallback} /> 
 
 		<HeaderCard />
 

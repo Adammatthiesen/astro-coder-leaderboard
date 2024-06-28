@@ -29,15 +29,8 @@ export const dbTools = () => {
                     return await db.update(SiteData)
                             .set({id: 1, lastCodeStatsCheck: newSiteData})
                             .where(eq(SiteData.id, 1))
-                            .catch(async (err) => {
-                                return await db.insert(SiteData)
-                                        .values({id: 1, lastCodeStatsCheck: newSiteData})
-                                        .returning()
-                                        .get()
-                            })
-                            .then(() => {
-                                return newSiteData
-                            })
+                            .returning()
+                            .get();
                 }
             }
         },
@@ -77,7 +70,10 @@ export const dbTools = () => {
                             .catch((err) => {
                                 return new AstroError(err, "Error updating CodeStatsDataCache")
                             })
-                    return await dbTools().CodeStatsDataCache().create(newCodeStatsData, currentDate)
+                    await dbTools().SiteData().update(currentDate);
+                    return await db.insert(CodeStatsDataCache)
+                            .values(newCodeStatsData)
+                            .returning()
                 },
             }
         },

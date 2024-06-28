@@ -1,5 +1,5 @@
 ---
-import { Alert, Divider, Icon, VisuallyHidden } from "astrolace:components";
+import { Alert, Divider, Icon } from "astrolace:components";
 import { Input } from "astrolace:components";
 import { Button, Dialog } from "astrolace:components";
 ---
@@ -46,14 +46,12 @@ import { Button, Dialog } from "astrolace:components";
     New User
 </Button>
 
-<VisuallyHidden>
-    <div class="alert-toast">
-        <Alert variant="danger" duration={6000} closable>
-            <Icon slot="icon" name="alert-circle" />
-            <p id="newuser-form-error-toast"></p>
-        </Alert>
-    </div>
-</VisuallyHidden>
+<div class="alert-toast">
+    <Alert variant="danger" duration={6000} closable>
+        <Icon slot="icon" name="alert-circle" />
+        <p id="newuser-form-error-toast"></p>
+    </Alert>
+</div>
 
 
 <script>

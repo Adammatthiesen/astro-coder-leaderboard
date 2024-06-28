@@ -16,7 +16,7 @@ export const POST: APIRoute = async (context: APIContext): Promise<Response> => 
     const rawPassword = formData.get("password") as string;
 
     // Check if the password is valid
-    if(typeof rawPassword !== "string" || rawPassword.length < 6 || rawPassword.length > 100) {
+    if(typeof rawPassword !== "string" || rawPassword.length > 100) {
         return new Response("Password must be between 6 and 100 characters", { 
             status: 400, 
             statusText: "Bad Request" 

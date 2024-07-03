@@ -7,19 +7,19 @@ import { Button, Dialog } from "astrolace:components";
 
     <form id="edit-user-creation" action="/api/edituser" method="post">
 
-        <Input name="code-stats-username" label="Code::Stats Username" form="edit-user-creation" inputmode="text" type="text" required />
+        <Input id="edit-user-code-stats-username" name="code-stats-username" label="Code::Stats Username" form="edit-user-creation" inputmode="text" type="text" required />
 
         <Divider />
 
-        <Input name="display-name" label="Display Name" form="edit-user-creation" inputmode="text" help-text="This will change your display name!" type="text" required />
+        <Input id="edit-user-display-name" name="display-name" label="Display Name" form="edit-user-creation" inputmode="text" help-text="This will change your display name!" type="text" required />
 
         <Divider />
 
-        <Input name="gravatar-email" label="Gravatar Email" form="edit-user-creation" inputmode="email" type="email" help-text="This will change your  Avatar image from Gravatar.com" required />
+        <Input id="edit-user-gravatar-email" name="gravatar-email" label="Gravatar Email" form="edit-user-creation" inputmode="email" type="email" help-text="This will change your  Avatar image from Gravatar.com" required />
 
         <Divider />
 
-        <Input name="password" label="Confirm Password" form="edit-user-creation" inputmode="text" type="password" required />
+        <Input id="edit-user-password" name="password" label="Confirm Password" form="edit-user-creation" inputmode="text" type="password" required />
 
         <Divider />
 

@@ -9,6 +9,8 @@ interface Props {
 
 const canonical = new URL(Astro.url.pathname, Astro.url.origin).href;
 
+const CurrentTimeStamp = (new Date().getTime() / 1000).toFixed(0)
+
 const { title, description = title } = Astro.props;
 ---
 
@@ -27,7 +29,7 @@ const { title, description = title } = Astro.props;
 		<meta property="og:url" content={canonical} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={canonical+"og.png"} />
+		<meta property="og:image" content={`${canonical}og.png?v=${CurrentTimeStamp}`} />
 		<meta property="og:site_name" content={title} />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:image:width" content="1920" />
